@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import "swiper/swiper-bundle.css";
@@ -7,6 +7,8 @@ import stat from "../../image/icone/statistic.png";
 import like from "../../image/icone/like.png";
 import ProductItem from "../../../AllProducts/components/ProductItem";
 import "./style/swiperActual.css";
+import { CustomContext } from "../../../utils/Context";
+import { fetchActualDevices } from "../../../http/deviceAPI";
 
 SwiperCore.use([Navigation]);
 
@@ -15,6 +17,7 @@ export default function App() {
   const [data, setData] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(4);
+  const { devices } = useContext(CustomContext);
 
   const updateSlidesPerView = () => {
     if (window.innerWidth < 600) {
@@ -30,19 +33,32 @@ export default function App() {
 
   window.addEventListener("resize", updateSlidesPerView);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchActualDevices(
+  //     // Используем fetchActualDevices вместо fetchDevices
+  //     devices.selectedType.id,
+  //     devices.selectedBrand.id,
+  //     devices.page,
+  //     6
+  //   ).then((data) => {
+  //     devices.setDevices(data.rows);
+  //     devices.setTotalCount(data.count);
+  //   });
+  // }, [devices.page, devices.selectedType, devices.selectedBrand]);
 
-  const fetchData = () => {
-    fetch("http://localhost:3000/product")
-      .then((response) => response.json())
-      .then((jsonData) => setData(jsonData));
-  };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  useEffect(() => {
-    setFilteredProducts(data.filter((item) => item.type === "actual"));
-  }, [data]);
+  // const fetchData = () => {
+  //   fetch("http://localhost:3000/product")
+  //     .then((response) => response.json())
+  //     .then((jsonData) => setData(jsonData));
+  // };
+
+  // useEffect(() => {
+  //   setFilteredProducts(data.filter((item) => item.type === "actual"));
+  // }, [data]);
 
   return (
     <section className="swiper-container">
@@ -60,7 +76,7 @@ export default function App() {
         spaceBetween={50}
         className="mySwiper"
       >
-        {filteredProducts.map((item) => (
+        {devices.devices.map((item) => (
           <SwiperSlide id="slide" key={item.id}>
             <ProductItem product={item} />
           </SwiperSlide>

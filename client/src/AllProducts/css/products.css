@@ -93,6 +93,9 @@
   width: 246px;
   height: 281px;
 }
+.swiper-slide .product__conteiner_img {
+  width: 200px;
+}
 .product__btn {
   font-size: 20px;
   padding: 10px 30px;
@@ -104,6 +107,11 @@
 }
 .product__titles {
   min-height: 46px;
+}
+.swiper-slide .product__titles {
+  height: 46px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .products {
@@ -139,7 +147,7 @@
   position: absolute;
   display: none;
 }
-.hover {
+.no-hover {
   border-radius: 20px;
   height: 40px;
   width: 40px;
@@ -154,6 +162,10 @@
   font-weight: bold;
   font-size: 12px;
 }
+.swiper-slide .no-hover {
+  right: 20px;
+  top: 0px;
+}
 .product__discount {
   color: rgb(0, 0, 0);
 }
@@ -166,6 +178,10 @@
   top: -18px;
   left: 69px;
   text-decoration: line-through 1.5px;
+}
+.swiper-slide .with-discount {
+  top: -18px;
+  left: 81px;
 }
 .prod {
   position: relative;

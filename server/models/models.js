@@ -19,14 +19,21 @@ const BasketDevice = sequelize.define("basket_device", {
 const Device = sequelize.define("device", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, unique: true, allowNull: false },
-  price: { type: DataTypes.INTEGER, allowNull: false },
+  price: { type: DataTypes.STRING, allowNull: false },
   rating: { type: DataTypes.INTEGER, defaultValue: 0 },
   img: { type: DataTypes.STRING, allowNull: false },
+  img2: { type: DataTypes.STRING, allowNull: false },
+  img3: { type: DataTypes.STRING, allowNull: false },
+  img4: { type: DataTypes.STRING, allowNull: false },
+  discount: { type: DataTypes.INTEGER, allowNull: false },
+  catigory: { type: DataTypes.STRING, allowNull: false },
+  relevance: { type: DataTypes.STRING, allowNull: false },
 });
 
 const Type = sequelize.define("type", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, unique: true, allowNull: false },
+  link: { type: DataTypes.STRING, unique: true, allowNull: false },
 });
 
 const Brand = sequelize.define("brand", {

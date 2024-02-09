@@ -18,7 +18,7 @@ function Basket() {
   useEffect(() => {
     setSumCost(
       basket.reduce((accumulator, currentValue) => {
-        const costSum = parseFloat(currentValue.cost.replace(/[ ,]/g, ""));
+        const costSum = parseFloat(currentValue.price.replace(/[ ,]/g, ""));
         const costMain = costSum - costSum * currentValue.discount;
         const costVV = accumulator + costMain * currentValue.count;
         return Math.round(+costVV);
@@ -30,7 +30,7 @@ function Basket() {
     let totalDiscount = 0;
 
     basket.forEach((item) => {
-      const costs = parseFloat(item.cost.replace(/[ ,]/g, ""));
+      const costs = parseFloat(item.price.replace(/[ ,]/g, ""));
       const buyin = Math.round(costs - costs * item.discount);
       const discount = (costs - buyin) * item.count;
       totalDiscount += discount;
@@ -94,13 +94,16 @@ function Basket() {
           <div className="basket-place__content">
             <ul className="basket-place__content-list">
               {basket.map((item) => {
-                const costs = parseFloat(item.cost.replace(/[ ,]/g, ""));
+                const costs = parseFloat(item.price.replace(/[ ,]/g, ""));
                 const buyin = Math.round(costs - costs * item.discount);
                 const num = +item.count;
 
                 return (
                   <li className="basket-place__content-list_item" key={item.id}>
-                    <img src={item.img} alt="404" />
+                    <img
+                      src={process.env.REACT_APP_API_URL + item.img}
+                      alt="404"
+                    />
                     <span className="content-list_item-name">{item.name}</span>
 
                     <div className="content-list_item__costs">

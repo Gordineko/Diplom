@@ -21,7 +21,7 @@ const SigninSchema = Yup.object().shape({
 });
 
 const Auth = observer(({ AuthActive, handleClick, RegActive }) => {
-  const { users, isAuth, setIsAuth } = useContext(CustomContext);
+  const { users } = useContext(CustomContext);
   const [serverError, setServerError] = useState("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");

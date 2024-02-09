@@ -6,7 +6,7 @@ import DeviceStore from "../store/DeviceStore";
 export const CustomContext = createContext();
 
 export const Context = (props) => {
-  const [user, setUser] = useState({ email: "" });
+  // const [user, setUser] = useState({ email: "" });
   const [search, setSearch] = useState([]);
   const [basket, setBasket] = useState([]);
   const [favored, setFavored] = useState([]);
@@ -21,11 +21,11 @@ export const Context = (props) => {
     setCount(totalCount);
   }, [basket]);
 
-  useEffect(() => {
-    if (localStorage.getItem("user") != null) {
-      setUser(JSON.parse(localStorage.getItem("user")));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("user") != null) {
+  //     setUser(JSON.parse(localStorage.getItem("user")));
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (localStorage.getItem("likes") != null) {
@@ -42,8 +42,8 @@ export const Context = (props) => {
   const value = {
     users: new UserStore(),
     devices: new DeviceStore(),
-    user,
-    setUser,
+    // user,
+    // setUser,
     search,
     setSearch,
     basket,

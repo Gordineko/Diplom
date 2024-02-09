@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./product.css";
 import Footer from "../MainLanding/pages/Footer";
 import Header from "../MainLanding/pages/Header";
-import { useParams } from "react-router-dom";
+import { useFetcher, useParams } from "react-router-dom";
 import Presentation from "./components/Presentation";
 import Loader from "../MainLanding/Loader";
+import { fetchOneDevice, fetchTypes } from "../http/deviceAPI";
+import { CustomContext } from "../utils/Context";
 
 function Product() {
-  const { name } = useParams();
+  const { name, id } = useParams();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { devices } = useContext(CustomContext);
+  const [device, setDevice] = useState({ info: [] });
+  useEffect(() => {
+    fetchOneDevice(id).then((data) => setDevice(data));
+    fetchTypes().then((data) => devices.setTypes(data));
+  }, [id]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -20,22 +28,6 @@ function Product() {
 
     return () => clearTimeout(timer);
   }, [filteredProducts]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/product");
-        const jsonData = await response.json();
-        setProducts(jsonData);
-      } catch (error) {
-        console.error("error fetch product data", error.message);
-      }
-    };
-    fetchData();
-  }, []);
-  useEffect(() => {
-    setFilteredProducts(products.filter((item) => item.name === name));
-  }, [products, name]);
 
   return (
     <>
@@ -47,13 +39,7 @@ function Product() {
         <div>
           <Header />
 
-          {filteredProducts.map((product) => (
-            <Presentation
-              key={product.id}
-              product={product}
-              className="product"
-            />
-          ))}
+          <Presentation key={device.id} product={device} className="product" />
 
           <Footer />
           <span>asdsd</span>

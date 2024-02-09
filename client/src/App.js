@@ -18,18 +18,23 @@ import { CustomContext } from "./utils/Context";
 import { useContext, useEffect, useState } from "react";
 import { check } from "./http/userAPI";
 import Loader from "./MainLanding/Loader";
+import { fetchDevices, fetchTypes } from "./http/deviceAPI";
 
 const App = observer(() => {
-  const { users } = useContext(CustomContext);
+  const { users, devices } = useContext(CustomContext);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    check()
-      .then((data) => {
-        users.setUser(true);
-        users.setIsAuth(true);
-      })
-      .finally(() => setLoading(false));
+    const timer = setTimeout(() => {
+      fetchTypes().then((data) => devices.setTypes(data));
+      check()
+        .then((data) => {
+          users.setUser(data);
+          users.setIsAuth(true);
+        })
+        .finally(() => setLoading(false));
+    }, 500);
   }, []);
+
   if (loading) {
     return <Loader />;
   }

@@ -41,7 +41,7 @@ function PersonalArea() {
             >
               <img src={avatar} alt="404" />
               <div className="pofile-date__txt">
-                <span>{user.name}</span>
+                <span>{user.name}ыфв</span>
                 <span>{user.email}</span>
               </div>
             </div>

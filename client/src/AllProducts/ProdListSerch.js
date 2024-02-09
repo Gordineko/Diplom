@@ -9,13 +9,18 @@ import { CustomContext } from "../utils/Context";
 import Sort from "./components/Sort";
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
+import { fetchTypes } from "../http/deviceAPI";
 
 function ProdListSerch() {
   const { inquiry } = useParams();
-  const { search } = useContext(CustomContext);
+  const { search, devices } = useContext(CustomContext);
   const [searchResults, setSearchResults] = useState([]);
   const [values, setValues] = useState([0, 500000]);
   const [sortBy, setSortBy] = useState(null);
+
+  useEffect(() => {
+    fetchTypes().then((data) => devices.setTypes(data));
+  }, []);
 
   useEffect(() => {
     const parsedSearch = JSON.parse(localStorage.getItem("search"));

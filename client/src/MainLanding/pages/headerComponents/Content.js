@@ -11,62 +11,61 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import { CustomContext } from "../../../utils/Context";
+import { fetchDevices, fetchSearchDevices } from "../../../http/deviceAPI";
 
 function Content({ handleClick }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const { setSearch, favored, count } = useContext(CustomContext);
-  const [data, setData] = useState([]);
+  const { setSearch, favored, count, devices } = useContext(CustomContext);
+  const [dataSearch, setDataSearch] = useState([]);
   const [products, setProducts] = useState({});
   const [favoredLenght, setFavoredLenght] = useState("");
 
+  useEffect(() => {
+    fetchSearchDevices(devices.page, 1000).then((data) => {
+      devices.setSearchDevices(data.rows);
+      devices.setTotalCount(data.count);
+      setDataSearch(data);
+    });
+  }, [searchTerm]);
+  console.log(dataSearch.rows);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchData();
-    const products = JSON.parse(localStorage.getItem("search"));
-    if (products) {
-      setSearch(products);
-    }
-  }, []);
+  // const logOut = () => {
+  //   users.setUser({});
+  //   users.setIsAuth(false);
+  // };
 
   useEffect(() => {
     setFavoredLenght(favored.length);
   }, [favored]);
 
-  const fetchData = () => {
-    fetch("http://localhost:3000/product")
-      .then((response) => response.json())
-      .then((jsonData) => setData(jsonData));
-  };
-
   const handleInputChange = (e) => {
     const newSearchTerm = e.target.value;
     setSearchTerm(newSearchTerm);
 
+    console.log(searchTerm);
     if (newSearchTerm === "") {
       setProducts([]);
       return;
     }
 
-    const filteredProducts = data.filter((product) =>
+    const filteredProducts = dataSearch.rows.filter((product) =>
       product.name.toLowerCase().includes(newSearchTerm.toLowerCase())
     );
 
     setProducts(filteredProducts);
   };
-  const oppenSerchProduct = (catigory, name) => {
-    navigate(`/${catigory}/${name}`);
+  const oppenSerchProduct = (catigory, name, id) => {
+    navigate(`/${catigory}/${name}/${id}`);
     setSearchTerm("");
     setProducts([]);
   };
 
   function fetchProduct() {
     if (products.length > 0) {
-      localStorage.removeItem("search");
       setSearch(products);
       setProducts([]);
       navigate(`/search/${searchTerm}`);
-      localStorage.setItem("search", JSON.stringify(products));
     } else return;
   }
 
@@ -90,6 +89,7 @@ function Content({ handleClick }) {
         <div
           className="header__logo"
           onClick={() => {
+            localStorage.removeItem("selectedType");
             navigate("/");
           }}
         >
@@ -120,10 +120,14 @@ function Content({ handleClick }) {
             <img src={serch} alt="sd" />
           </button>
 
+          {devices.searchDevices.map((el) => {
+            return <span className="123123123">{el.id}</span>;
+          })}
+
           {products.length > 0 && (
             <div className="header__search-products">
               {products.map((item) => {
-                const costs = parseFloat(item.cost.replace(/[ ,]/g, ""));
+                const costs = parseFloat(item.price.replace(/[ ,]/g, ""));
                 const buyin = Math.round(costs - costs * item.discount);
                 const percent = item.discount * 100;
                 return (
@@ -131,12 +135,12 @@ function Content({ handleClick }) {
                     className="search-product"
                     key={item.id}
                     onClick={() => {
-                      oppenSerchProduct(item.catigory, item.name);
+                      oppenSerchProduct(item.catigory, item.name, item.id);
                     }}
                   >
                     <img
                       className="search-product__img"
-                      src={item.img}
+                      src={process.env.REACT_APP_API_URL + item.img}
                       alt="404"
                     />
                     <div className="search-product__content">

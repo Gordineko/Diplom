@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../style/header.css";
 
 import Content from "./headerComponents/Content";
 import Choice from "./headerComponents/Сhoice";
 import Preview from "./headerComponents/Preview";
 import Burger from "./headerComponents/Burger";
+import { fetchTypes } from "../../http/deviceAPI";
+import { CustomContext } from "../../utils/Context";
 function Header() {
+  const { devices } = useContext(CustomContext);
   const [AuthActive, setAuthActive] = useState(false);
   const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    fetchTypes().then((data) => devices.setTypes(data));
+  }, [devices]);
 
   function openAuth() {
     setAuthActive(!AuthActive);

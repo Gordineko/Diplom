@@ -15,7 +15,6 @@ function Preview({ AuthActive, handleClick }) {
   const [RegActive, setRegActive] = useState(false);
   const navigate = useNavigate();
   const { users } = useContext(CustomContext);
-  console.log(users.isAuth);
   function openLoginPage(href) {
     window.location.href = `${href}`;
   }

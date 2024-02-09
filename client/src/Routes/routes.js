@@ -52,7 +52,7 @@ export const publicRoutes = [
     element: <Prod />,
   },
   {
-    path: "/:type/:name",
+    path: "/:type/:name/:id",
     element: <Product />,
   },
   {

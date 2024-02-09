@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotFaund() {
-  return <div>NotFaund</div>;
+  return <div>NotFaunsd</div>;
 }
 
 export default NotFaund;

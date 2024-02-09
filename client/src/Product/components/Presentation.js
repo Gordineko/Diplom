@@ -7,6 +7,7 @@ import ConsolesDescript from "./ConsolesDescript";
 import WatchDescript from "./WatchDescript";
 import GamesDescript from "./GamesDescript";
 import PcDescript from "./PcDescript";
+import "../style/description.css";
 import { CustomContext } from "../../utils/Context";
 
 function Presentation(props) {
@@ -19,33 +20,8 @@ function Presentation(props) {
 
     console.log("asd");
   };
-  const costs = parseFloat(product.cost.replace(/[ ,]/g, ""));
+  const costs = parseFloat(product.price.replace(/[ ,]/g, ""));
   const buyin = Math.round(costs - costs * product.discount);
-
-  console.log(buyin);
-  function renderDescription() {
-    switch (product.catigory) {
-      case "phones":
-        return <PhoneDescript product={product} />;
-      case "laptops":
-        return <LaptopaDescript product={product} />;
-      case "tablets":
-        return <TabletsDescript product={product} />;
-      case "homes":
-        return <HomeDescript product={product} />;
-      case "consoles":
-        return <ConsolesDescript product={product} />;
-      case "clocks":
-        return <WatchDescript product={product} />;
-      case "games":
-        return <GamesDescript product={product} />;
-      case "computers":
-        return <PcDescript product={product} />;
-
-      default:
-        return <p>Описание </p>;
-    }
-  }
 
   function BuyProduct(product, buttonIndex, e) {
     e.stopPropagation();
@@ -80,29 +56,29 @@ function Presentation(props) {
                 className="product__photo usual"
                 onClick={() => changeMainImage(product.img)}
               >
-                <img src={product.img}></img>
+                <img src={process.env.REACT_APP_API_URL + product.img}></img>
               </div>
               <div
                 className="product__photo usual"
                 onClick={() => changeMainImage(product.img2)}
               >
-                <img src={product.img2}></img>
+                <img src={process.env.REACT_APP_API_URL + product.img2}></img>
               </div>
               <div
                 className="product__photo usual"
                 onClick={() => changeMainImage(product.img3)}
               >
-                <img src={product.img3}></img>
+                <img src={process.env.REACT_APP_API_URL + product.img3}></img>
               </div>
               <div
                 className="product__photo usual"
                 onClick={() => changeMainImage(product.img4)}
               >
-                <img src={product.img4}></img>
+                <img src={process.env.REACT_APP_API_URL + product.img4}></img>
               </div>
             </div>
             <div className="products__photo_preview">
-              <img src={mainImage}></img>
+              <img src={process.env.REACT_APP_API_URL + mainImage}></img>
             </div>
           </div>
 
@@ -112,15 +88,15 @@ function Presentation(props) {
               <div className="product__costs">
                 <p
                   className={
-                    product.discount === ""
+                    product.discount === "0"
                       ? "product__title_cost without-discount"
                       : "product__title_cost with-discount"
                   }
                 >
-                  {product.cost + " ₴"}
+                  {product.price + " ₴"}
                 </p>
                 <p className="product__title_cost">
-                  {product.discount === "" ? "" : buyin + " ₴"}
+                  {product.discount === 0 ? "" : buyin + " ₴"}
                 </p>
               </div>
 
@@ -153,7 +129,25 @@ function Presentation(props) {
           <div className="product__description_title">
             <span>Технические Характеристики</span>
           </div>
-          {renderDescription(props)}
+
+          <div className="product__description_info">
+            <ul className="description__list">
+              {product.info.map((info) => (
+                <li key={info.id} className="description__list_item">
+                  {info.title}
+                </li>
+              ))}
+            </ul>
+            <div className="description_info_data">
+              <ul className="description_data__list">
+                {product.info.map((info) => (
+                  <li key={info.id} className="description_data__list_item">
+                    {info.description}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

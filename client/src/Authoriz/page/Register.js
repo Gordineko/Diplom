@@ -34,7 +34,7 @@ function Register({ handleClick, RegActive }) {
       users.setIsAuth(true);
       handleClick();
     } catch (e) {
-      setServerError(e.response.data.message);
+      setServerError(e.response.user.message);
     }
   };
   // function registerUser(values) {

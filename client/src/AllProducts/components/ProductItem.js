@@ -16,7 +16,7 @@ function ProductItem(props) {
 
   const navigate = useNavigate();
 
-  const costs = parseFloat(product.cost.replace(/[ ,]/g, ""));
+  const costs = parseFloat(product.price.replace(/[ ,]/g, ""));
   const buyin = Math.round(costs - costs * product.discount);
   const percent = product.discount * 100;
 
@@ -29,8 +29,8 @@ function ProductItem(props) {
     setFocus(buttonIndex);
   };
 
-  function handleClick(catigory, name) {
-    navigate(`/${catigory}/${name}`);
+  function handleClick(catigory, name, id) {
+    navigate(`/${catigory}/${name}/${id}`);
   }
 
   function likeProduct(product, buttonIndex, e) {
@@ -74,7 +74,7 @@ function ProductItem(props) {
   return (
     <div
       className="prod"
-      onClick={() => handleClick(product.catigory, product.name)}
+      onClick={() => handleClick(product.catigory, product.name, product.id)}
       onMouseEnter={(e) => {
         handleButtonHover(product.id);
       }}
@@ -84,7 +84,11 @@ function ProductItem(props) {
     >
       <div className="product__conteiner_img">
         <img
-          src={focus === product.id ? product.img2 : product.img}
+          src={
+            focus === product.id
+              ? process.env.REACT_APP_API_URL + product.img2
+              : process.env.REACT_APP_API_URL + product.img
+          }
           alt="404"
         />
       </div>
@@ -95,12 +99,12 @@ function ProductItem(props) {
         <div className="product__costs">
           <p
             className={
-              product.discount === ""
+              product.discount === "0"
                 ? "product__cost without-discount"
                 : "product__cost with-discount"
             }
           >
-            {product.cost + " ₴"}
+            {product.price + " ₴"}
           </p>
           <p className="product__discount">
             {product.discount === "" ? "" : buyin + " ₴"}
@@ -133,7 +137,7 @@ function ProductItem(props) {
         className={
           percent === 0 || focus === product.id
             ? "prod__description"
-            : "prod__description hover"
+            : "prod__description no-hover"
         }
       >
         <span>{percent + "%"}</span>
