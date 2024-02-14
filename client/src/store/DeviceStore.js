@@ -5,7 +5,8 @@ export default class DeviceStore {
     this._types = [];
     this._brands = [];
     this._devices = [];
-    this._searchDevices = [];
+    this._searchDevices =
+      JSON.parse(localStorage.getItem("searchDevices")) || [];
     this._selectedType = JSON.parse(localStorage.getItem("selectedType")) || {};
     this._selectedBrand = {};
     this._page = 1;
@@ -25,6 +26,11 @@ export default class DeviceStore {
   }
   setSearchDevices(searchDevices) {
     this._searchDevices = searchDevices;
+    if (searchDevices) {
+      localStorage.setItem("searchDevices", JSON.stringify(searchDevices));
+    } else {
+      localStorage.removeItem("searchDevices");
+    }
   }
 
   setSelectedType(type) {

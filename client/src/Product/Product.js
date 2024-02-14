@@ -17,7 +17,7 @@ function Product() {
   const [device, setDevice] = useState({ info: [] });
   useEffect(() => {
     fetchOneDevice(id).then((data) => setDevice(data));
-    fetchTypes().then((data) => devices.setTypes(data));
+    // fetchTypes().then((data) => devices.setTypes(data));
   }, [id]);
 
   useEffect(() => {

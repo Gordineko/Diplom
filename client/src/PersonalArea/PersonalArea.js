@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../MainLanding/pages/Header";
 import { useContext } from "react";
 import { CustomContext } from "../utils/Context";
@@ -11,18 +11,36 @@ import box from "../MainLanding/image/icone/box.png";
 import sms from "../MainLanding/image/icone/message-on-phone.png";
 import { useState } from "react";
 import Footer from "../MainLanding/pages/Footer";
+import { check } from "../http/userAPI";
+import Loader from "../MainLanding/Loader";
 
 function PersonalArea() {
   const { users, user, setUser } = useContext(CustomContext);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [activeButtonIndex, setActiveButtonIndex] = useState(1);
+
+  const navigate = useNavigate();
+  const currentUser = users.user;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      check()
+        .then((data) => {
+          users.setUser(data);
+          users.setIsAuth(true);
+        })
+        .finally(() => setLoading(false));
+    }, 500);
+  }, [users]);
 
   const handleButtonClick = (buttonIndex, nav) => {
     setActiveButtonIndex(buttonIndex);
     navigate(nav);
   };
 
-  console.log(users);
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <>
       <Header />
@@ -41,8 +59,7 @@ function PersonalArea() {
             >
               <img src={avatar} alt="404" />
               <div className="pofile-date__txt">
-                <span>{user.name}ыфв</span>
-                <span>{user.email}</span>
+                <span>{currentUser.email}</span>
               </div>
             </div>
             <ul className="personal__pofile-list">

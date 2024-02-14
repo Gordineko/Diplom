@@ -4,7 +4,8 @@ import UserStore from "../store/UserStore";
 import DeviceStore from "../store/DeviceStore";
 
 export const CustomContext = createContext();
-
+const devices = new DeviceStore();
+const users = new UserStore();
 export const Context = (props) => {
   // const [user, setUser] = useState({ email: "" });
   const [search, setSearch] = useState([]);
@@ -40,8 +41,8 @@ export const Context = (props) => {
   }, []);
 
   const value = {
-    users: new UserStore(),
-    devices: new DeviceStore(),
+    users,
+    devices,
     // user,
     // setUser,
     search,

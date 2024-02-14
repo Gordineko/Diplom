@@ -9,7 +9,7 @@ import { CustomContext } from "../utils/Context";
 import Sort from "./components/Sort";
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
-import { fetchTypes } from "../http/deviceAPI";
+import { fetchSearchDevices, fetchTypes } from "../http/deviceAPI";
 
 function ProdListSerch() {
   const { inquiry } = useParams();
@@ -18,14 +18,8 @@ function ProdListSerch() {
   const [values, setValues] = useState([0, 500000]);
   const [sortBy, setSortBy] = useState(null);
 
-  useEffect(() => {
-    fetchTypes().then((data) => devices.setTypes(data));
-  }, []);
-
-  useEffect(() => {
-    const parsedSearch = JSON.parse(localStorage.getItem("search"));
-    setSearchResults(parsedSearch);
-  }, [search]);
+  console.log(devices.devices);
+  console.log(Array.from(devices.searchDevices));
 
   useEffect(() => {
     const filteredByValues = searchResults.filter((item) => {
@@ -81,7 +75,7 @@ function ProdListSerch() {
               </h2>
             </div>
             <ul className="products">
-              {searchResults.map((product) => (
+              {devices.searchDevices.map((product) => (
                 <ProductItem key={product.id} product={product} />
               ))}
             </ul>

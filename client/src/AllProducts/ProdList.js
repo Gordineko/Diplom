@@ -21,14 +21,7 @@ const Prod = observer(() => {
   const [activeSort, setActiveSort] = useState(false);
 
   const { devices } = useContext(CustomContext);
-  useEffect(() => {
-    fetchTypes().then((data) => devices.setTypes(data));
-    fetchBrands().then((data) => devices.setBrands(data));
-    // fetchDevices(null, null, 1, 2).then((data) => {
-    //   devices.setDevices(data.rows);
-    //   devices.setTotalCount(data.count);
-    // });
-  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -47,7 +40,7 @@ const Prod = observer(() => {
       devices.setDevices(data.rows);
       devices.setTotalCount(data.count);
     });
-  }, [devices.page, devices.selectedType, devices.selectedBrand]);
+  }, [devices.page, devices.selectedType]);
 
   // useEffect(() => {
   //   const fetchData = async () => {

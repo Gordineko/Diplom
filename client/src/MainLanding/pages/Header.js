@@ -12,9 +12,9 @@ function Header() {
   const [AuthActive, setAuthActive] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
-  useEffect(() => {
-    fetchTypes().then((data) => devices.setTypes(data));
-  }, [devices]);
+  // useEffect(() => {
+  //   fetchTypes().then((data) => devices.setTypes(data));
+  // }, [devices]);
 
   function openAuth() {
     setAuthActive(!AuthActive);

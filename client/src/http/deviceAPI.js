@@ -52,12 +52,27 @@ export const fetchActualDevices = async (page, limit = 5) => {
   });
   return data;
 };
-export const fetchSearchDevices = async (page, limit = 5) => {
-  const { data } = await $host.get("api/device/search", {
-    params: {
-      page,
-      limit,
-    },
-  });
-  return data;
+// export const fetchSearchDevices = async (page, limit = 5) => {
+//   const { data } = await $host.get("api/device/search", {
+//     params: {
+//       page,
+//       limit,
+//     },
+//   });
+//   return data;
+// };
+export const fetchSearchDevices = async (page, limit = 5, searchTerm = "") => {
+  try {
+    const { data } = await $host.get("api/device/search", {
+      params: {
+        page,
+        limit,
+        searchTerm,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error("Error fetching search devices:", error);
+    throw error;
+  }
 };

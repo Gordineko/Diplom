@@ -1,7 +1,7 @@
 const uuid = require("uuid");
 const path = require("path");
 const { Device, DeviceInfo } = require("../models/models");
-
+const { Op } = require("sequelize");
 const ApiError = require("../error/ApiError");
 
 class DeviceController {
@@ -148,21 +148,43 @@ class DeviceController {
   //     return res.status(500).json({ error: "Internal Server Error" });
   //   }
   // }
+  // async getSearchDevices(req, res) {
+  //   let { limit, page } = req.query;
+  //   page = page || 1;
+  //   limit = limit || 9;
+  //   let offset = page * limit - limit;
+  //   let device;
+
+  //   try {
+  //     device = await Device.findAndCountAll({
+  //       where: { relevance: "actual" },
+  //       limit,
+  //       offset,
+  //     });
+
+  //     return res.json(device);
+  //   } catch (error) {
+  //     return res.status(500).json({ error: "Internal Server Error" });
+  //   }
+  // }
   async getSearchDevices(req, res) {
-    let { limit, page } = req.query;
+    let { limit, page, searchTerm } = req.query;
     page = page || 1;
     limit = limit || 9;
     let offset = page * limit - limit;
-    let device;
 
     try {
-      device = await Device.findAndCountAll({
-        where: { relevance: "actual" },
+      let devices;
+
+      devices = await Device.findAndCountAll({
+        where: {
+          name: { [Op.iLike]: `%${searchTerm}%` },
+        },
         limit,
         offset,
       });
 
-      return res.json(device);
+      return res.json(devices);
     } catch (error) {
       return res.status(500).json({ error: "Internal Server Error" });
     }

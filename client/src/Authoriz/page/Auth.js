@@ -53,7 +53,6 @@ const Auth = observer(({ AuthActive, handleClick, RegActive }) => {
     try {
       let user;
       user = await login(values.email, values.password);
-      // setIsAuth(true);
       users.setUser(users);
       users.setIsAuth(true);
       handleClick();

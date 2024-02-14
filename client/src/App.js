@@ -25,7 +25,7 @@ const App = observer(() => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
-      fetchTypes().then((data) => devices.setTypes(data));
+      // fetchTypes().then((data) => devices.setTypes(data));
       check()
         .then((data) => {
           users.setUser(data);
@@ -33,7 +33,7 @@ const App = observer(() => {
         })
         .finally(() => setLoading(false));
     }, 500);
-  }, []);
+  }, [users]);
 
   if (loading) {
     return <Loader />;

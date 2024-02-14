@@ -11,7 +11,7 @@ import { registration } from "../../http/userAPI";
 const SigninSchema = Yup.object().shape({
   name: Yup.string().required("Поле должно быть заполнено"),
   surname: Yup.string().required("Поле должно быть заполнено"),
-  phoneNamber: Yup.string()
+  phoneNumber: Yup.string()
     .matches(/^\+380\d{9}$/, "+380...")
     .required("Поле должно быть заполнено"),
   email: Yup.string()
@@ -29,7 +29,13 @@ function Register({ handleClick, RegActive }) {
   const signIn = async (values) => {
     try {
       let user;
-      user = await registration(values.email, values.password);
+      user = await registration(
+        values.email,
+        values.password,
+        values.name,
+        values.surname,
+        values.phoneNumber
+      );
       users.setUser(users);
       users.setIsAuth(true);
       handleClick();
@@ -72,12 +78,13 @@ function Register({ handleClick, RegActive }) {
           initialValues={{
             name: "",
             surname: "",
-            phoneNamber: "",
+            phoneNumber: "",
             email: "",
             password: "",
           }}
           validationSchema={SigninSchema}
           onSubmit={(values) => {
+            console.log(values);
             signIn(values);
           }}
         >
@@ -106,18 +113,18 @@ function Register({ handleClick, RegActive }) {
                 ) : null}
                 <label
                   className="register__phoneNamber-label"
-                  htmlFor="phoneNamber"
+                  htmlFor="phoneNumber"
                 >
                   Номер телефона
                 </label>
                 <Field
                   className="register__input phoneNamber"
-                  name="phoneNamber"
-                  id="phoneNamber"
+                  name="phoneNumber"
+                  id="phoneNumber"
                 />
-                {errors.phoneNamber && touched.phoneNamber ? (
+                {errors.phoneNumber && touched.phoneNumber ? (
                   <div className="register__phoneNamber-msg msg">
-                    {errors.phoneNamber}
+                    {errors.phoneNumber}
                   </div>
                 ) : null}
                 <label className="register__email-label" htmlFor="email">

@@ -21,19 +21,15 @@ function Content({ handleClick }) {
   const [favoredLenght, setFavoredLenght] = useState("");
 
   useEffect(() => {
-    fetchSearchDevices(devices.page, 1000).then((data) => {
-      devices.setSearchDevices(data.rows);
-      devices.setTotalCount(data.count);
-      setDataSearch(data);
-    });
+    if (searchTerm !== "") {
+      fetchSearchDevices(devices.page, 1000, searchTerm).then((data) => {
+        devices.setSearchDevices(data.rows);
+        devices.setTotalCount(data.count);
+      });
+    }
   }, [searchTerm]);
-  console.log(dataSearch.rows);
-  const navigate = useNavigate();
 
-  // const logOut = () => {
-  //   users.setUser({});
-  //   users.setIsAuth(false);
-  // };
+  const navigate = useNavigate();
 
   useEffect(() => {
     setFavoredLenght(favored.length);
@@ -43,13 +39,12 @@ function Content({ handleClick }) {
     const newSearchTerm = e.target.value;
     setSearchTerm(newSearchTerm);
 
-    console.log(searchTerm);
     if (newSearchTerm === "") {
       setProducts([]);
       return;
     }
 
-    const filteredProducts = dataSearch.rows.filter((product) =>
+    const filteredProducts = devices.searchDevices.filter((product) =>
       product.name.toLowerCase().includes(newSearchTerm.toLowerCase())
     );
 
@@ -119,10 +114,6 @@ function Content({ handleClick }) {
           <button type="submit" onClick={fetchProduct}>
             <img src={serch} alt="sd" />
           </button>
-
-          {devices.searchDevices.map((el) => {
-            return <span className="123123123">{el.id}</span>;
-          })}
 
           {products.length > 0 && (
             <div className="header__search-products">

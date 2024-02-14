@@ -34,6 +34,7 @@ function ProductItem(props) {
   }
 
   function likeProduct(product, buttonIndex, e) {
+    e.preventDefault();
     e.stopPropagation();
     setisFavored(buttonIndex);
     if (typeof product === "object" && product !== null) {
@@ -47,9 +48,7 @@ function ProductItem(props) {
       }
     }
   }
-  function BuyProduct(product, buttonIndex, e) {
-    e.stopPropagation();
-
+  function BuyProduct(product, buttonIndex) {
     if (typeof product === "object" && product !== null) {
       const existingProductIndex = basket.findIndex(
         (basketProduct) => basketProduct.id === product.id
@@ -114,9 +113,9 @@ function ProductItem(props) {
           <button
             className="product__btn"
             onClick={(e) => {
-              if (BuyProduct(product, product.id, e) === false) {
-                e.preventDefault();
-              }
+              e.preventDefault();
+              e.stopPropagation();
+              BuyProduct(product, product.id);
             }}
           >
             В корзину
