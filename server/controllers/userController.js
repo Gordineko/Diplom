@@ -11,10 +11,22 @@ const generateJwt = (
   phoneNumber,
   patronymic,
   date,
-  gender
+  gender,
+  address
 ) => {
   return jwt.sign(
-    { id, email, role, name, surname, phoneNumber, patronymic, date, gender },
+    {
+      id,
+      email,
+      role,
+      name,
+      surname,
+      phoneNumber,
+      patronymic,
+      date,
+      gender,
+      address,
+    },
     process.env.SECRET_KEY,
     {
       expiresIn: "24h",
@@ -33,6 +45,7 @@ class UserController {
       patronymic,
       date,
       gender,
+      address,
     } = req.body;
     if (!email || !password) {
       return next(ApiError.badRequest("некоректрый email или password"));
@@ -52,6 +65,7 @@ class UserController {
       patronymic,
       date,
       gender,
+      address,
     });
     const basket = await Basket.create({ userId: user.id });
     const token = generateJwt(
@@ -63,7 +77,8 @@ class UserController {
       user.phoneNumber,
       user.patronymic,
       user.date,
-      user.gender
+      user.gender,
+      user.address
     );
 
     return res.json({ token });
@@ -79,6 +94,7 @@ class UserController {
       patronymic,
       date,
       gender,
+      address,
     } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -97,7 +113,8 @@ class UserController {
       user.phoneNumber,
       user.patronymic,
       user.date,
-      user.gender
+      user.gender,
+      user.address
     );
     return res.json({ token });
   }
@@ -112,7 +129,8 @@ class UserController {
       req.user.phoneNumber,
       req.user.patronymic,
       req.user.date,
-      req.user.gender
+      req.user.gender,
+      req.user.address
     );
     return res.json({ token });
   }
@@ -128,6 +146,7 @@ class UserController {
         patronymic,
         date,
         gender,
+        address,
       } = req.body;
 
       const user = await User.findByPk(id);
@@ -146,6 +165,7 @@ class UserController {
       if (patronymic) user.patronymic = patronymic;
       if (date) user.date = date;
       if (gender) user.gender = gender;
+      if (address) user.address = address;
 
       await user.save(); // Сохраняем обновленные данные
 
@@ -159,7 +179,8 @@ class UserController {
         user.phoneNumber,
         user.patronymic,
         user.date,
-        user.gender
+        user.gender,
+        user.address
       );
 
       return res.json({

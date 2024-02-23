@@ -97,6 +97,9 @@
   background-color: rgb(114, 95, 238, 0.2);
   color: #b9b7b7;
 }
+.profile__item-content .obtained__image {
+  display: none;
+}
 .item-content__list-button {
   background-color: #725fee;
   border: 0;
@@ -109,6 +112,33 @@
   border-radius: 10px;
   border: 3px solid #725fee;
   padding: 5px;
+}
+.profile select {
+  border-radius: 10px;
+  border: 3px solid #725fee;
+  padding: 5px;
+}
+.profile select option {
+  border-radius: 10px;
+  border: 3px solid #725fee;
+  padding: 5px;
+}
+.obtained {
+  height: 90px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+}
+.obtained span {
+  font-size: 30px;
+}
+.obtained img {
+  width: 100%;
+}
+.obtained__image {
+  margin-left: 30px;
+  width: 90px;
+  height: 90px;
 }
 
 @media (max-width: 1100px) {

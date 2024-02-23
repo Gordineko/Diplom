@@ -9,7 +9,8 @@ export const registration = async (
   phoneNumber,
   patronymic,
   date,
-  gender
+  gender,
+  address
 ) => {
   const { data } = await $host.post("api/user/registration", {
     email,
@@ -20,7 +21,8 @@ export const registration = async (
     patronymic,
     date,
     gender,
-    role: "ADMIN",
+    address,
+    role: "USER",
   });
   localStorage.setItem("token", data.token);
   return jwtDecode(data.token);
@@ -33,7 +35,8 @@ export const login = async (
   phoneNumber,
   patronymic,
   date,
-  gender
+  gender,
+  address
 ) => {
   const { data } = await $host.post("api/user/login", {
     email,
@@ -44,6 +47,7 @@ export const login = async (
     patronymic,
     date,
     gender,
+    address,
   });
   localStorage.setItem("token", data.token);
   return jwtDecode(data.token);
@@ -64,6 +68,7 @@ export const updateUser = async (userData) => {
       patronymic,
       date,
       gender,
+      address,
     } = userData;
 
     const { data } = await $authHost.put("api/user/update", {
@@ -75,6 +80,7 @@ export const updateUser = async (userData) => {
       patronymic,
       date,
       gender,
+      address,
     });
     localStorage.setItem("token", data.token);
     return jwtDecode(data.token);

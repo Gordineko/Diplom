@@ -28,7 +28,7 @@ const App = observer(() => {
       // fetchTypes().then((data) => devices.setTypes(data));
       check()
         .then((data) => {
-          users.setUser(data);
+          users.setUser(true);
           users.setIsAuth(true);
         })
         .finally(() => setLoading(false));
