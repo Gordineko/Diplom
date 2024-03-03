@@ -5,14 +5,21 @@ import NotFound from "../404/NotFound";
 import { CustomContext } from "../utils/Context";
 
 function AppRouter() {
-  // const isAuth = false;
   const { users } = useContext(CustomContext);
-  console.log(users);
   return (
     <Routes>
-      {users.isAuth &&
-        authRoutes.map(({ path, element }) => (
-          <Route key={path} path={path} element={element} />
+      {users.userRole == "ADMIN" &&
+        authRoutes.map(({ path, element, children }) => (
+          <Route key={path} path={path} element={element}>
+            {children &&
+              children.map(({ path: childPath, element: childElement }) => (
+                <Route
+                  key={childPath}
+                  path={childPath}
+                  element={childElement}
+                />
+              ))}
+          </Route>
         ))}
       {publicRoutes.map(({ path, element, children }) => (
         <Route key={path} path={path} element={element}>

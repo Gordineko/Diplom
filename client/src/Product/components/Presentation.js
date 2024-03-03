@@ -1,24 +1,16 @@
 import React, { useContext, useState } from "react";
-import PhoneDescript from "./PhoneDescript";
-import LaptopaDescript from "./LaptopaDescript";
-import TabletsDescript from "./TabletsDescript";
-import HomeDescript from "./HomeDescript";
-import ConsolesDescript from "./ConsolesDescript";
-import WatchDescript from "./WatchDescript";
-import GamesDescript from "./GamesDescript";
-import PcDescript from "./PcDescript";
 import "../style/description.css";
 import { CustomContext } from "../../utils/Context";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Presentation(props) {
   const { basket, setBasket } = useContext(CustomContext);
   const { product } = props;
   const [mainImage, setMainImage] = useState(product.img);
+  const navigate = useNavigate();
 
   const changeMainImage = (newImage) => {
     setMainImage(newImage);
-
-    console.log("asd");
   };
   const costs = parseFloat(product.price.replace(/[ ,]/g, ""));
   const buyin = Math.round(costs - costs * product.discount);
@@ -46,6 +38,7 @@ function Presentation(props) {
       }
     }
   }
+  console.log(product);
   return (
     <section className="product__page">
       <div className="container">
@@ -111,7 +104,6 @@ function Presentation(props) {
                 >
                   В корзину
                 </button>
-                <button className="product__btn buy">быстрый заказ</button>
               </div>
             </div>
             <div className="product_advert">

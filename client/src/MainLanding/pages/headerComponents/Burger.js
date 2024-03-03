@@ -16,6 +16,10 @@ import { useNavigate } from "react-router-dom";
 function Burger({ isActive, handleClick, AuthClick }) {
   const navigate = useNavigate();
   const { users } = useContext(CustomContext);
+  const loginHandler = () => {
+    handleClick();
+    AuthClick();
+  };
   return (
     <div className={isActive ? "burger-menu active" : "burger-menu inactive"}>
       <div className="burger-menu_prew">

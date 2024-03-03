@@ -34,6 +34,18 @@ const generateJwt = (
   );
 };
 class UserController {
+  async getAllUsers(req, res, next) {
+    try {
+      const users = await User.findAll();
+      const customers = users.filter((user) => {
+        return user.role === "USER";
+      });
+
+      return res.json(customers);
+    } catch (error) {
+      next(error);
+    }
+  }
   async registration(req, res, next) {
     const {
       email,
@@ -104,10 +116,55 @@ class UserController {
     if (!comparePassword) {
       return next(ApiError.internal1("пароль не верный"));
     }
+
+    // Добавляем проверку роли пользователя
+    if (user.role !== "USER") {
+      return next(ApiError.internal1("Доступ запрещен"));
+    }
+
     const token = generateJwt(
       user.id,
       user.email,
-      user.password,
+      user.role,
+      user.name,
+      user.surname,
+      user.phoneNumber,
+      user.patronymic,
+      user.date,
+      user.gender,
+      user.address
+    );
+    return res.json({ token });
+  }
+  async loginAdmin(req, res, next) {
+    const {
+      email,
+      password,
+      name,
+      surname,
+      phoneNumber,
+      patronymic,
+      date,
+      gender,
+      address,
+    } = req.body;
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return next(ApiError.internal1("пользователь не найден"));
+    }
+    let comparePassword = bcrypt.compareSync(password, user.password);
+    if (!comparePassword) {
+      return next(ApiError.internal1("пароль не верный"));
+    }
+
+    if (user.role !== "ADMIN") {
+      return next(ApiError.internal1("Доступ запрещен"));
+    }
+
+    const token = generateJwt(
+      user.id,
+      user.email,
+      user.role,
       user.name,
       user.surname,
       user.phoneNumber,

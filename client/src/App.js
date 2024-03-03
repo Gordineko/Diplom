@@ -23,6 +23,7 @@ import { fetchDevices, fetchTypes } from "./http/deviceAPI";
 const App = observer(() => {
   const { users, devices } = useContext(CustomContext);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       // fetchTypes().then((data) => devices.setTypes(data));
@@ -30,6 +31,7 @@ const App = observer(() => {
         .then((data) => {
           users.setUser(true);
           users.setIsAuth(true);
+          users.setRole(data.role);
         })
         .finally(() => setLoading(false));
     }, 500);

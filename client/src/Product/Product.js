@@ -38,11 +38,8 @@ function Product() {
       ) : (
         <div>
           <Header />
-
           <Presentation key={device.id} product={device} className="product" />
-
           <Footer />
-          <span>asdsd</span>
         </div>
       )}
     </>

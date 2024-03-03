@@ -42,10 +42,12 @@ function Сatalog() {
           <div
             key={type.id}
             className="catalog__list_item"
-            onClick={() => handleClick(`/${type.link}`, type)}
+            onClick={() => handleClick(`/products/${type.link}`, type)}
           >
             <span>{type.name}</span>
-            <img src={imageMap[type.link]} alt="404" />
+            <div className="catalog__list_item__container-img">
+              <img src={imageMap[type.link]} alt="404" />
+            </div>
           </div>
         ))}
       </div>

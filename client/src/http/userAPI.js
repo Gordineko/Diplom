@@ -1,6 +1,16 @@
 import { $authHost, $host } from ".";
 import { jwtDecode } from "jwt-decode";
 
+export const getAllUsers = async () => {
+  try {
+    const { data } = await $authHost.get("api/user/users");
+    return data;
+  } catch (error) {
+    console.error("Ошибка при получении пользователей:", error);
+    throw error;
+  }
+};
+
 export const registration = async (
   email,
   password,
@@ -39,6 +49,31 @@ export const login = async (
   address
 ) => {
   const { data } = await $host.post("api/user/login", {
+    email,
+    password,
+    name,
+    surname,
+    phoneNumber,
+    patronymic,
+    date,
+    gender,
+    address,
+  });
+  localStorage.setItem("token", data.token);
+  return jwtDecode(data.token);
+};
+export const loginAdmin = async (
+  email,
+  password,
+  name,
+  surname,
+  phoneNumber,
+  patronymic,
+  date,
+  gender,
+  address
+) => {
+  const { data } = await $host.post("api/user/admin", {
     email,
     password,
     name,

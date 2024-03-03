@@ -14,15 +14,13 @@ SwiperCore.use([Navigation]);
 
 export default function App() {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(4);
   const { devices } = useContext(CustomContext);
 
   const updateSlidesPerView = () => {
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 480) {
       setSlidesPerView(1);
-    } else if (window.innerWidth < 926) {
+    } else if (window.innerWidth < 726) {
       setSlidesPerView(2);
     } else if (window.innerWidth < 1250) {
       setSlidesPerView(3);
@@ -32,33 +30,6 @@ export default function App() {
   };
 
   window.addEventListener("resize", updateSlidesPerView);
-
-  // useEffect(() => {
-  //   fetchActualDevices(
-  //     // Используем fetchActualDevices вместо fetchDevices
-  //     devices.selectedType.id,
-  //     devices.selectedBrand.id,
-  //     devices.page,
-  //     6
-  //   ).then((data) => {
-  //     devices.setDevices(data.rows);
-  //     devices.setTotalCount(data.count);
-  //   });
-  // }, [devices.page, devices.selectedType, devices.selectedBrand]);
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // const fetchData = () => {
-  //   fetch("http://localhost:3000/product")
-  //     .then((response) => response.json())
-  //     .then((jsonData) => setData(jsonData));
-  // };
-
-  // useEffect(() => {
-  //   setFilteredProducts(data.filter((item) => item.type === "actual"));
-  // }, [data]);
 
   return (
     <section className="swiper-container">

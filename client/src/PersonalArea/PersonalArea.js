@@ -15,7 +15,7 @@ import { check } from "../http/userAPI";
 import Loader from "../MainLanding/Loader";
 
 function PersonalArea() {
-  const { users, user, setUser } = useContext(CustomContext);
+  const { users } = useContext(CustomContext);
   const [loading, setLoading] = useState(true);
   const [activeButtonIndex, setActiveButtonIndex] = useState(1);
 

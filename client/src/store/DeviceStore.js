@@ -52,6 +52,9 @@ export default class DeviceStore {
   setTotalCount(count) {
     this._totalCount = count;
   }
+  setLimit(limit) {
+    this._limit = limit;
+  }
 
   get types() {
     return this._types;

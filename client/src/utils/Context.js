@@ -2,17 +2,18 @@ import { useEffect } from "react";
 import { createContext, useState } from "react";
 import UserStore from "../store/UserStore";
 import DeviceStore from "../store/DeviceStore";
+import OrderStore from "../store/OrderStore";
 
 export const CustomContext = createContext();
 const devices = new DeviceStore();
 const users = new UserStore();
+const orders = new OrderStore();
 export const Context = (props) => {
   // const [user, setUser] = useState({ email: "" });
   const [search, setSearch] = useState([]);
   const [basket, setBasket] = useState([]);
   const [favored, setFavored] = useState([]);
   const [count, setCount] = useState([]);
-  // const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
     let totalCount = 0;
@@ -21,12 +22,6 @@ export const Context = (props) => {
     });
     setCount(totalCount);
   }, [basket]);
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("user") != null) {
-  //     setUser(JSON.parse(localStorage.getItem("user")));
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (localStorage.getItem("likes") != null) {
@@ -43,8 +38,7 @@ export const Context = (props) => {
   const value = {
     users,
     devices,
-    // user,
-    // setUser,
+    orders,
     search,
     setSearch,
     basket,
@@ -53,8 +47,6 @@ export const Context = (props) => {
     setFavored,
     count,
     setCount,
-    // isAuth,
-    // setIsAuth,
   };
 
   return (

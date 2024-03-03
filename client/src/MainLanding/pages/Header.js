@@ -20,6 +20,7 @@ function Header() {
     setAuthActive(!AuthActive);
   }
   function openMobileAuth() {
+    console.log("auth");
     setAuthActive(!AuthActive);
     setIsActive(!isActive);
   }

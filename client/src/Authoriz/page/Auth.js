@@ -55,6 +55,8 @@ const Auth = observer(({ AuthActive, handleClick, RegActive }) => {
       user = await login(values.email, values.password);
       users.setUser(users);
       users.setIsAuth(true);
+      users.setRole(user.role);
+      console.log(users.userRole);
       handleClick();
     } catch (e) {
       setServerError(e.response.data.message);

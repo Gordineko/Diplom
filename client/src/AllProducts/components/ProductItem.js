@@ -111,7 +111,7 @@ function ProductItem(props) {
         </div>
         <div className="product_item_do">
           <button
-            className="product__btn"
+            className="product__btn_buy"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

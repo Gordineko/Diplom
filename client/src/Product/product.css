@@ -51,6 +51,7 @@
   padding: 12px 25px;
 }
 .basket {
+  cursor: pointer;
   margin-right: 20px;
   padding: 10px 25px;
   background-color: inherit;
@@ -121,7 +122,9 @@
 .without-discount {
   display: none;
 }
-
+.product__btn .basket {
+  cursor: pointer;
+}
 @media (max-width: 1250px) {
   .products__photo_preview {
     width: 350px;

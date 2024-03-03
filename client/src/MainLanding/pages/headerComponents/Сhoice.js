@@ -67,7 +67,7 @@ const Сhoice = observer(() => {
                   }
                   onClick={() => {
                     devices.setSelectedType(el);
-                    handleButtonClick(el.id, `/${el.link}`);
+                    handleButtonClick(el.id, `/products/${el.link}`);
                   }}
                 >
                   {el.name}

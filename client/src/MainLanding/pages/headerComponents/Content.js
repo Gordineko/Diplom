@@ -15,7 +15,8 @@ import { fetchDevices, fetchSearchDevices } from "../../../http/deviceAPI";
 
 function Content({ handleClick }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const { setSearch, favored, count, devices } = useContext(CustomContext);
+  const { setSearch, favored, count, devices, basket } =
+    useContext(CustomContext);
   const [dataSearch, setDataSearch] = useState([]);
   const [products, setProducts] = useState({});
   const [favoredLenght, setFavoredLenght] = useState("");

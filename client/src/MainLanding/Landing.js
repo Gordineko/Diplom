@@ -21,7 +21,6 @@ function Landing() {
       devices.setTotalCount(data.count);
       seta(data);
     });
-    console.log(a.rows);
   }, [devices.page, devices.selectedType, devices.selectedBrand]);
   useEffect(() => {
     const timer = setTimeout(() => {

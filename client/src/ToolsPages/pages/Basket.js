@@ -112,12 +112,12 @@ function Basket() {
                       </span>
                       <span
                         className={
-                          item.discount === ""
+                          item.discount === "0"
                             ? " without-discount"
                             : " with-discount"
                         }
                       >
-                        {costs + " ₴"}
+                        {item.discount === "0" ? "" : costs * item.count + " ₴"}
                       </span>
                     </div>
                     <div className="content-list_item__quantity">
@@ -179,7 +179,12 @@ function Basket() {
                     <img src={arrow} alt="404" />
                   </button>
                 </div>
-                <button className="basket-place__payment-form__submit">
+                <button
+                  className="basket-place__payment-form__submit"
+                  onClick={() => {
+                    navigate(`/order`);
+                  }}
+                >
                   Оплатить всё
                 </button>
               </div>

@@ -168,6 +168,7 @@
   flex-direction: column;
 }
 .basket-place__clear-img {
+  margin: 0 auto;
   animation: moveLeftRight 3s ease infinite;
   width: 250px;
   height: 250px;

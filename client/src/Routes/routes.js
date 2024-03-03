@@ -1,5 +1,6 @@
 import Prod from "../AllProducts/ProdList";
 import ProdListSerch from "../AllProducts/ProdListSerch";
+
 import Landing from "../MainLanding/Landing";
 import PersonalArea from "../PersonalArea/PersonalArea";
 import Desired from "../PersonalArea/components/Desired";
@@ -27,28 +28,53 @@ import {
   SMS_ROUT,
   STOCK_ROUT,
 } from "../utils/consts";
+import Order from "../ordering/Order";
+import Auth from "../Authoriz/page/Auth";
+import Register from "../Authoriz/page/Register";
+import AdminAuth from "../Admin/AdminAuth";
+import AllOrders from "../Admin/components/AllOrders";
+import ProductAdding from "../Admin/components/ProductAdding";
+import Customers from "../Admin/components/Customers";
 
 export const authRoutes = [
   {
-    path: ADMIN_ROUT,
+    path: "/admin",
     element: <Admin />,
+    children: [
+      {
+        path: "",
+        element: <ProductAdding />,
+      },
+      {
+        path: "orders",
+        element: <AllOrders />,
+      },
+      {
+        path: "customers",
+        element: <Customers />,
+      },
+    ],
   },
 ];
 export const publicRoutes = [
   {
-    path: "/",
-    element: <Landing />,
+    path: "/admin",
+    element: <AdminAuth />,
   },
   {
     path: "/login",
-    element: <Admin />,
+    element: <Auth />,
+  },
+  {
+    path: "/order",
+    element: <Order />,
   },
   {
     path: "/registration",
-    element: <Admin />,
+    element: <Register />,
   },
   {
-    path: "/:type",
+    path: "/products/:type",
     element: <Prod />,
   },
   {
@@ -85,6 +111,7 @@ export const publicRoutes = [
     path: "/search/:inquiry",
     element: <ProdListSerch />,
   },
+
   {
     path: "/like",
     element: <Like />,
@@ -92,5 +119,9 @@ export const publicRoutes = [
   {
     path: "/basket",
     element: <Basket />,
+  },
+  {
+    path: "/",
+    element: <Landing />,
   },
 ];
