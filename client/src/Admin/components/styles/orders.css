@@ -52,14 +52,14 @@
   width: 22px;
   transform: rotate(0deg);
 }
-.close {
+.orders .close {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   opacity: 0;
 }
 
-.open {
+.orders .open {
   background-color: #2a292a;
   padding-bottom: 25px;
   border-radius: 10px;

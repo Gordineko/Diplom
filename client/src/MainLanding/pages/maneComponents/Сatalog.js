@@ -9,23 +9,25 @@ import consoles from "../../image/products/consoles.png";
 import clocks from "../../image/products/clocks.png";
 import computers from "../../image/products/computers.png";
 import { CustomContext } from "../../../utils/Context";
+import { useNavigate } from "react-router-dom";
 
 function Сatalog() {
   const imageMap = {
-    phones,
-    laptops,
-    tablets,
-    games,
     homes,
     consoles,
     clocks,
     computers,
+    phones,
+    laptops,
+    tablets,
+    games,
   };
   const [isOpen, setIsOpen] = useState(false);
   const { devices } = useContext(CustomContext);
+  const navigate = useNavigate();
   function handleClick(href, type) {
     devices.setSelectedType(type);
-    window.location.href = `${href}`;
+    navigate(`${href}`);
   }
   function openCatalog() {
     setIsOpen(!isOpen);
