@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../style/description.css";
 import { CustomContext } from "../../utils/Context";
+
 import { Navigate, useNavigate } from "react-router-dom";
 
 function Presentation(props) {
@@ -38,7 +39,7 @@ function Presentation(props) {
       }
     }
   }
-  console.log(product);
+
   return (
     <section className="product__page">
       <div className="container">
@@ -81,7 +82,7 @@ function Presentation(props) {
               <div className="product__costs">
                 <p
                   className={
-                    product.discount === "0"
+                    product.discount === 0
                       ? "product__title_cost without-discount"
                       : "product__title_cost with-discount"
                   }

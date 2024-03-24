@@ -119,9 +119,7 @@
   -webkit-text-decoration: line-through 1.5px;
   text-decoration: line-through 1.5px;
 }
-.without-discount {
-  display: none;
-}
+
 .product__btn .basket {
   cursor: pointer;
 }

@@ -13,14 +13,14 @@ import { useNavigate } from "react-router-dom";
 
 function Сatalog() {
   const imageMap = {
-    homes,
-    consoles,
-    clocks,
-    computers,
     phones,
     laptops,
     tablets,
     games,
+    homes,
+    consoles,
+    clocks,
+    computers,
   };
   const [isOpen, setIsOpen] = useState(false);
   const { devices } = useContext(CustomContext);
