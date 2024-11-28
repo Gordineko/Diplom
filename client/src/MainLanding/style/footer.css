@@ -31,6 +31,19 @@
 .footer__confidentiality span:nth-child(1) {
   margin-right: 60px;
 }
+.by {
+  float: right;
+  color: color(srgb 0.1398 0.3608 0.2908);
+  font-size: 14px;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.margin {
+  margin-bottom: 30px;
+}
 @media (max-width: 1000px) {
   .footer__content li {
     display: none;
@@ -58,4 +71,7 @@
   .footer__lists {
     padding-bottom: 27px;
   }
+}
+#by__text {
+  margin-right: 10px;
 }

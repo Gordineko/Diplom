@@ -1,25 +1,28 @@
 import React from "react";
 import "../css/sort.css";
 
-function Sort({ priceAscending, priceDescending }) {
+function Sort({ priceAscending, priceDescending, priceDiscount }) {
   return (
     <div className="products__memory">
-      <h2>Отсортировать</h2>
+      <h2>Відсортувати</h2>
       <ul>
         <li
           className="products__memory-sort__list-item"
           onClick={() => priceAscending()}
         >
-          <p>По возрастанию</p>
+          <p>За зростанням</p>
         </li>
         <li
           className="products__memory-sort__list-item"
           onClick={() => priceDescending()}
         >
-          <p>По убыванию</p>
+          <p>За спаданням</p>
         </li>
-        <li className="products__memory-sort__list-item">
-          <p>Сначала акции</p>
+        <li
+          className="products__memory-sort__list-item"
+          onClick={() => priceDiscount()}
+        >
+          <p>Спочатку акції</p>
         </li>
       </ul>
     </div>

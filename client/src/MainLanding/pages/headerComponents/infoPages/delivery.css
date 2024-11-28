@@ -1,0 +1,17 @@
+.delivery-content {
+  padding: 50px 15px 100px 15px;
+}
+.delivery__title {
+  margin-bottom: 50px;
+}
+.delivery__list {
+}
+.delivery__list__item {
+  cursor: pointer;
+  margin-bottom: 25px;
+  color: #725fee;
+}
+
+.delivery__list__item:hover {
+  transform: translateX(5px);
+}

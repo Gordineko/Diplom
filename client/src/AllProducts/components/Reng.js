@@ -13,7 +13,7 @@ function Reng({ values, setValues }) {
       <div className="range__slide_value">
         <div className="value__stat">
           <div className="value__stat_txt">
-            <span>от</span>
+            <span>Від</span>
           </div>
           <div className="value__stat_index">
             <span> {values[0]}</span>
@@ -21,7 +21,7 @@ function Reng({ values, setValues }) {
         </div>
         <div className="value__stat">
           <div className="value__stat_txt">
-            <span>до</span>
+            <span>До</span>
           </div>
           <div className="value__stat_index">
             <span> {values[1]}</span>

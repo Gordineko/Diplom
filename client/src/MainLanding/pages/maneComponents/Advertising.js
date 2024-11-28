@@ -13,8 +13,8 @@ function Advertising() {
           <img src={mac} alt="404" />
           <div className="advert__txt">
             <p className="advert__txt_name">Apple MacBook Air 13.6</p>
-            <p className="advert__txt_description">Выгода до 10 000 ua</p>
-            <button className="advert__btn">Подробнее</button>
+            <p className="advert__txt_description">Вигода до 10 000 ua</p>
+            <button className="advert__btn">Детальніше</button>
           </div>
         </div>
         <ul className="advert__manufacturer">
@@ -46,7 +46,7 @@ function Advertising() {
           </li>
 
           <li>
-            <button className="manufacturer_btn">HONOR </button>
+            <button className="manufacturer_btn">HONOR</button>
           </li>
         </ul>
       </div>

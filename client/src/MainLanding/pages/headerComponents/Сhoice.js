@@ -52,7 +52,7 @@ const Сhoice = observer(() => {
           }}
         >
           <img src={activeButtonIndex === 5 ? list : list_black} alt="404" />
-          <span>Все товары</span>
+          <span>Усі товари</span>
         </div>
         <ul className="choice__nav">
           {devices.types.map(

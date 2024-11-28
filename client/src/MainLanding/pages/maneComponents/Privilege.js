@@ -14,54 +14,54 @@ function Privilege() {
   return (
     <section className="privilege">
       <div className="privilege__title">
-        <h2>Наши преимущества</h2>
+        <h2>Наші переваги</h2>
       </div>
       <div className="privilege__cards">
         <div className="privilege__cards_item">
           <img src={delivery} alt="404" />{" "}
-          <span>Експресс доставка за 2 часа</span>
+          <span>Експрес доставка за 2 години</span>
         </div>
         <div className="privilege__cards_item">
           <img src={verify} alt="404" />
-          <span>Гарантия лучшего качества</span>
+          <span>Гарантія найкращої якості</span>
         </div>
         <div className="privilege__cards_item">
           <img src={groceries} alt="404" />
-          <span>Самовывоз в 10 городах</span>
+          <span>Самовивіз у 10 містах</span>
         </div>
         <div className="privilege__cards_item">
           <img src={document} alt="404" />{" "}
-          <span>2 года сервистного обслуживания</span>
+          <span>2 роки сервісного обслуговування</span>
         </div>
         <div className="privilege__cards_item">
           <img src={computer} alt="404" />
-          <span>Подключение оборудивания</span>
+          <span>Підключення обладнання</span>
         </div>
         <div className="privilege__cards_item">
           <img src={safebox} alt="404" />
-          <span>Бонус программа</span>
+          <span>Бонус програма</span>
         </div>
         <div className="privilege__cards_item">
           <img src={refund} alt="404" />
-          <span>Быстрый обмен и возврат</span>
+          <span>Швидкий обмін і повернення</span>
         </div>
         <div className="privilege__cards_item">
           <img src={shield} alt="404" />
-          <span>Бензсрочная рассрочка</span>
+          <span>Безстрокова розстрочка</span>
         </div>
       </div>
       <div className="privilege__promo">
         <div className="privilege__promo_stock">
           <div className="stock__txt">
-            <h3>Не нашли ничего интересного?</h3>
-            <span>Возможно вы найдёте что-то среди наших акций</span>
-            <p> Все акции</p>
+            <h3>Не знайшли нічого цікавого?</h3>
+            <span>Можливо ви знайдете щось серед наших акцій</span>
+            <p> Усі акції</p>
           </div>
         </div>
         <div className="privilege__promo_offers">
           <div className="offers__txt">
-            <h3>Получайте самые интересные предложения первыми</h3>
-            <input placeholder="Введите Email"></input>
+            <h3>Отримуйте найцікавіші пропозиції першими</h3>
+            <input placeholder="Введіть Email"></input>
           </div>
         </div>
       </div>

@@ -98,7 +98,7 @@ function Content({ handleClick }) {
           <span className="logo">DOM1STORE</span>
         </div>
         <div className="header__contact">
-          <p>Бесплатно по УК</p>
+          <p>Безкоштовно по УК</p>
           <p className="txt_bolt">+38 (067) 432-43 </p>
         </div>
         <div className="header__hours">
@@ -107,7 +107,7 @@ function Content({ handleClick }) {
         </div>
         <div className="header__search">
           <input
-            placeholder="Поиск"
+            placeholder="Пошук"
             value={searchTerm}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
@@ -156,9 +156,6 @@ function Content({ handleClick }) {
           )}
         </div>
         <div className="header__work">
-          <button className="header__work__btn-stat">
-            <img src={stat} alt="404" />
-          </button>
           <button
             className="header__work__btn-shop"
             onClick={() => {

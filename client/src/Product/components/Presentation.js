@@ -103,15 +103,17 @@ function Presentation(props) {
                     }
                   }}
                 >
-                  В корзину
+                  До кошику
                 </button>
               </div>
             </div>
             <div className="product_advert">
-              <h3>Выбери сам !!!</h3>
-              <span>в подарок при заказе</span>
+              <h3>Обери самостійно !!!</h3>
+              <span>В подарунок при замовленні</span>
               <div className="product_advert_btn_group">
-                <button className="product__btn basket">Узнать больше</button>
+                <button className="product__btn basket">
+                  Дізнатись більше
+                </button>
               </div>
             </div>
           </div>
@@ -120,7 +122,7 @@ function Presentation(props) {
       <div className="product__description">
         <div className="container">
           <div className="product__description_title">
-            <span>Технические Характеристики</span>
+            <span>Технічні Характеристики</span>
           </div>
 
           <div className="product__description_info">

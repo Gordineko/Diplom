@@ -74,7 +74,7 @@ function PersonalArea() {
                 }}
               >
                 <img src={box} alt="404" />
-                <span>Мои заказы</span>
+                <span>Мої замовлення</span>
               </li>
               <li
                 className={
@@ -87,7 +87,7 @@ function PersonalArea() {
                 }}
               >
                 <img src={like} alt="404" />
-                <span> Список желаемого</span>
+                <span>Список бажаного</span>
               </li>
               <li
                 className={
@@ -100,7 +100,7 @@ function PersonalArea() {
                 }}
               >
                 <img src={sell} alt="404" />
-                <span>Участие в акциях</span>
+                <span>Участь в акціях</span>
               </li>
               <li
                 className={
@@ -113,7 +113,7 @@ function PersonalArea() {
                 }}
               >
                 <img src={sms} alt="404" />
-                <span>Рассылки</span>
+                <span>Розсилки</span>
               </li>
             </ul>
           </div>

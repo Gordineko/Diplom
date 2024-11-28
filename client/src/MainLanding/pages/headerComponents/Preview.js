@@ -23,6 +23,7 @@ function Preview({ AuthActive, handleClick }) {
   function closeRegister() {
     setRegActive(!RegActive);
   }
+
   return (
     <>
       <section className="header-preview">
@@ -31,18 +32,26 @@ function Preview({ AuthActive, handleClick }) {
         <div className="preview">
           <div className="preview__location">
             <img src={location} alt="404" />
-            <span>Днепр</span>
+            <span>Дніпро</span>
           </div>
           <ul className="preview_list">
-            <li>Доставка</li>
-            <li>Гарантия</li>
-            <li>Пункты выдачи на карте</li>
-            <li>Адреса магазинов </li>
+            <li onClick={() => navigate("/delivery")}>Доставка</li>
+            <li onClick={() => navigate("/warranty")}>Гарантія</li>
+            <li onClick={() => navigate("/about")}>Про нас</li>
           </ul>
           <div className="preview__groups">
-            <img src={tg} alt="404"></img>
-            <img src={vk} alt="404"></img>
-            <img src={yuo} alt="404"></img>
+            <img
+              src={tg}
+              alt="404"
+              onClick={() =>
+                (window.location.href = "https://web.telegram.org")
+              }
+            ></img>
+            <img
+              src={yuo}
+              alt="404"
+              onClick={() => (window.location.href = "https://www.youtube.com")}
+            ></img>
           </div>
           {users.isAuth ? (
             <div
@@ -55,12 +64,12 @@ function Preview({ AuthActive, handleClick }) {
             >
               <img src={prof} alt="404"></img>
               <div className="preview__profile-txt">
-                <span>Личный кабинет</span>
+                <span>Особистий кабінет</span>
                 <div className="preview__profile-under_txt">
                   <span>
                     {users.userRole == "ADMIN"
-                      ? "администратор"
-                      : "вход выполнен"}
+                      ? "адміністратор"
+                      : "вхід виконано"}
                   </span>
                 </div>
               </div>
@@ -68,7 +77,7 @@ function Preview({ AuthActive, handleClick }) {
           ) : (
             <div className="preview__profile" onClick={handleClick}>
               <img src={prof} alt="404"></img>
-              <span>Личный кабинет</span>
+              <span>Особистий кабінет</span>
             </div>
           )}
         </div>

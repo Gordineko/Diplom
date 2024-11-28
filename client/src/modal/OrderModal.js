@@ -10,10 +10,11 @@ function OrderModal({ click, isActive }) {
         <img src={thanks} alt="404" />
       </div>
 
-      <h2>Спасибо за заказ</h2>
+      <h2>Дякую за замовлення</h2>
       <div className="order__modal__content-txt">
         <span>
-          Ваш заказ приянт в обработку . Мы свяжемся c вами в ближайшее время
+          Ваше замовлення потрапило в обробку. Ми зв'яжемося з вами найближчим
+          часом
         </span>
       </div>
       <button

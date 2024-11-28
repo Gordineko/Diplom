@@ -79,7 +79,7 @@ function Profile() {
 
   return (
     <section className="profile">
-      <h1>Личные данные</h1>
+      <h1>Особисті данні</h1>
       <ul className="profile__list">
         <li
           className={
@@ -94,7 +94,7 @@ function Profile() {
         >
           <div className="list-item__content">
             <img src={avatar} alt="404" />
-            <span>Личные данный</span>
+            <span>Особисті данні</span>
           </div>
           <img src={bot} className="list-item__img-bot" alt="404" />
         </li>
@@ -133,7 +133,7 @@ function Profile() {
             <Form>
               <ul className="item-content__list">
                 <li className="item-content__list-item">
-                  <span className="item-content__list-item-txt">Фамилия</span>
+                  <span className="item-content__list-item-txt">Фамілія</span>
                   {editingActive[1] ? (
                     <Field
                       name="surname"
@@ -144,7 +144,7 @@ function Profile() {
                   )}
                 </li>
                 <li className="item-content__list-item">
-                  <span className="item-content__list-item-txt">Имя</span>
+                  <span className="item-content__list-item-txt">Ім'я</span>
                   {editingActive[1] ? (
                     <Field name="name" placeholder={currentUser.name}></Field>
                   ) : (
@@ -152,7 +152,9 @@ function Profile() {
                   )}
                 </li>
                 <li className="item-content__list-item">
-                  <span className="item-content__list-item-txt">Отчество</span>
+                  <span className="item-content__list-item-txt">
+                    По батькові
+                  </span>
 
                   {editingActive[1] ? (
                     <Field
@@ -169,7 +171,7 @@ function Profile() {
                 </li>
                 <li className="item-content__list-item">
                   <span className="item-content__list-item-txt">
-                    Дата рождения
+                    Дата народження
                   </span>
 
                   {editingActive[1] ? (
@@ -185,9 +187,9 @@ function Profile() {
 
                   {editingActive[1] ? (
                     <Field as="select" name="gender">
-                      <option value="Мужчина">Мужчина</option>
-                      <option value="Женщина">Женщина</option>
-                      <option value="Другое">Другое</option>
+                      <option value="Мужчина">Чоловік</option>
+                      <option value="Женщина">Жінка</option>
+                      <option value="Другое">Інше</option>
                     </Field>
                   ) : (
                     <span>
@@ -200,7 +202,7 @@ function Profile() {
               </ul>
               {editingActive[1] ? (
                 <button className="item-content__list-button" type="submit">
-                  Сохранить изменения
+                  Зберегти зміни
                 </button>
               ) : (
                 ""
@@ -217,7 +219,7 @@ function Profile() {
                 editActivating(1);
               }}
             >
-              Редактировать
+              Редагувати
             </button>
           )}
         </div>
@@ -231,7 +233,7 @@ function Profile() {
         >
           <div className="list-item__content">
             <img src={product} alt="404" />
-            <span>Мои полученые заказы</span>
+            <span>Мої отримані замовлення</span>
           </div>
           <img src={bot} className="list-item__img-bot" alt="404" />
         </li>
@@ -242,7 +244,7 @@ function Profile() {
         >
           {currentUser.obtainedProd === undefined ? (
             <div className="obtained">
-              <span>Вы ещё не совершали покупки</span>
+              <span>Ви ще не здійснювали покупки</span>
               <div className="obtained__image">
                 <img src={zeroBuy}></img>
               </div>
@@ -261,7 +263,7 @@ function Profile() {
               editActivating(2);
             }}
           >
-            Редактировать
+            Редагувати
           </button>
         </div>
         <li
@@ -277,7 +279,7 @@ function Profile() {
         >
           <div className="list-item__content">
             <img src={mail} alt="404" />
-            <span>Контакты</span>
+            <span>Контакти</span>
           </div>
           <img src={bot} className="list-item__img-bot" alt="404" />
         </li>
@@ -317,7 +319,7 @@ function Profile() {
               <ul className="item-content__list">
                 <li className="item-content__list-item">
                   <span className="item-content__list-item-txt">
-                    Подтверждённый телефон
+                    Підтверджений телефон
                   </span>
                   {editingActive[3] ? (
                     <Field
@@ -334,7 +336,7 @@ function Profile() {
                 </li>
                 <li className="item-content__list-item">
                   <span className="item-content__list-item-txt">
-                    Дополнительный телефон
+                    Додатковий телефон
                   </span>
 
                   {editingActive[3] ? (
@@ -352,7 +354,7 @@ function Profile() {
                 </li>
                 <li className="item-content__list-item">
                   <span className="item-content__list-item-txt">
-                    электронная почта
+                    електронная пошта
                   </span>
                   {editingActive[3] ? (
                     <Field name="email" placeholder={currentUser.email}></Field>
@@ -367,7 +369,7 @@ function Profile() {
               </ul>
               {editingActive[3] ? (
                 <button className="item-content__list-button" type="submit">
-                  Сохранить изменения
+                  Зберегти зміни
                 </button>
               ) : (
                 ""
@@ -384,7 +386,7 @@ function Profile() {
                 editActivating(3);
               }}
             >
-              Редактировать
+              Редагувати
             </button>
           )}
         </div>
@@ -398,7 +400,7 @@ function Profile() {
         >
           <div className="list-item__content">
             <img src={bas} alt="404" />
-            <span>Адрес доставки</span>
+            <span>Адресса доставки</span>
           </div>
 
           <img src={bot} className="list-item__img-bot" alt="404" />
@@ -438,7 +440,9 @@ function Profile() {
             <Form>
               <ul className="item-content__list">
                 <li className="item-content__list-item">
-                  <span className="item-content__list-item-txt">Ваш адрес</span>
+                  <span className="item-content__list-item-txt">
+                    Ваша адресса
+                  </span>
 
                   {editingActive[4] ? (
                     <Field
@@ -456,7 +460,7 @@ function Profile() {
               </ul>
               {editingActive[4] ? (
                 <button className="item-content__list-button" type="submit">
-                  Сохранить изменения
+                  Зберегти зміни
                 </button>
               ) : (
                 ""
@@ -473,7 +477,7 @@ function Profile() {
                 editActivating(4);
               }}
             >
-              Редактировать
+              Редагуваті
             </button>
           )}
         </div>
@@ -487,7 +491,7 @@ function Profile() {
         >
           <div className="list-item__content">
             <img src={lock} alt="404" />
-            <span>Логин</span>
+            <span>Логін</span>
           </div>
           <img src={bot} className="list-item__img-bot" alt="404" />
         </li>
@@ -528,7 +532,7 @@ function Profile() {
               <ul className="item-content__list">
                 <li className="item-content__list-item">
                   <span className="item-content__list-item-txt">
-                    Логин (телефон)
+                    Логін (телефон)
                   </span>
 
                   {editingActive[5] ? (
@@ -578,13 +582,13 @@ function Profile() {
                 editActivating(5);
               }}
             >
-              Редактировать
+              Редагувати
             </button>
           )}
         </div>
       </ul>
       <button className="item-content__list-button" onClick={logOutUser}>
-        Выйти с аккаунта
+        Покінути аккаунт
       </button>
       <Modal isOpen={isOpenModal} onClose={toggleModal} />
     </section>

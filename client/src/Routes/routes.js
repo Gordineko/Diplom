@@ -35,6 +35,11 @@ import AdminAuth from "../Admin/AdminAuth";
 import AllOrders from "../Admin/components/AllOrders";
 import ProductAdding from "../Admin/components/ProductAdding";
 import Customers from "../Admin/components/Customers";
+import Delivery from "../MainLanding/pages/headerComponents/infoPages/Delivery";
+import Offices from "../MainLanding/pages/headerComponents/infoPages/Offices";
+import Warranty from "../MainLanding/pages/headerComponents/infoPages/Warranty";
+import StoreAddresses from "../MainLanding/pages/headerComponents/infoPages/ AboutUs";
+import AboutUs from "../MainLanding/pages/headerComponents/infoPages/ AboutUs";
 
 export const authRoutes = [
   {
@@ -123,5 +128,18 @@ export const publicRoutes = [
   {
     path: "/",
     element: <Landing />,
+  },
+  {
+    path: "/delivery",
+    element: <Delivery />,
+  },
+
+  {
+    path: "/warranty",
+    element: <Warranty />,
+  },
+  {
+    path: "/about",
+    element: <AboutUs />,
   },
 ];

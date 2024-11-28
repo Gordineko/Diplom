@@ -38,10 +38,10 @@ function Burger({ isActive, handleClick, AuthClick }) {
           <div className="profile__content">
             <div className="profile__content_txt">
               <div className="profile__content_reg">
-                <span>Личный кобинет</span>
+                <span>Особистий кобінет</span>
               </div>
             </div>
-            <span>Вы успешно авторизованы</span>
+            <span>Вы успішно авторизувалися</span>
           </div>
         </div>
       ) : (
@@ -52,13 +52,13 @@ function Burger({ isActive, handleClick, AuthClick }) {
           <div className="profile__content">
             <div className="profile__content_txt" onClick={AuthClick}>
               <div className="profile__content_login">
-                <span>Вход</span>
+                <span>Вхід</span>
               </div>
               <div className="profile__content_reg">
-                <span>Регистрация</span>
+                <span>Реєстрація</span>
               </div>
             </div>
-            <span>Авторизуйтесь для получения расширеных возможностей</span>
+            <span>Авторизуйтесь для отримання розширених можливостей</span>
           </div>
         </div>
       )}
@@ -66,7 +66,7 @@ function Burger({ isActive, handleClick, AuthClick }) {
       <div className="burger-menu__sett">
         <ul>
           <li>
-            Язык :
+            Мова :
             <div className="burger-menu__sett-img">
               <img src={rus} alt="404" />
             </div>
@@ -78,12 +78,12 @@ function Burger({ isActive, handleClick, AuthClick }) {
             </div>
           </li>
           <li>
-            Город :{" "}
+            Країна :{" "}
             <div className="burger-menu__sett-city">
-              <span>Днепр</span>
+              <span>Дніпро</span>
             </div>
             <div className="burger-menu__sett-city">
-              <span>Киев</span>
+              <span>Київ</span>
             </div>
           </li>
         </ul>
@@ -95,10 +95,10 @@ function Burger({ isActive, handleClick, AuthClick }) {
             navigate("/like");
           }}
         >
-          <span>Понравившиеся товары</span>
+          <span>Товари, що сподобалися</span>
         </li>
         <li className="burger-menu__list-item">
-          <span>Справочный центр</span>
+          <span>Довідковий центр</span>
         </li>
         <li
           onClick={() => {
@@ -106,42 +106,42 @@ function Burger({ isActive, handleClick, AuthClick }) {
           }}
           className="burger-menu__list-item"
         >
-          <span>Корзина</span>
+          <span>Кошик</span>
         </li>
         <li className="burger-menu__list-item">
           <span>О нас</span>
         </li>
         <li className="burger-menu__list-item">
-          <span>Контакты</span>
+          <span>Контакти</span>
         </li>
         <li className="burger-menu__list-item">
-          <span>Возврат товаров</span>
+          <span>Повернення товарів</span>
         </li>
         <li className="burger-menu__list-item">
-          <span>Гарантия</span>
+          <span>Гарантія</span>
         </li>
       </ul>
       <div className="burger-menu__app">
-        <span>Скачайте наши приложения</span>
+        <span>Завантажте наші додатки</span>
         <div className="app__button_group">
           <div className="button_app">
             <img src={google} alt="404" />
             <div className="button_app__txt">
-              <p>Скачать в</p>
+              <p>Завантажити в</p>
               <p className="button_app__txt_store">Google Play</p>
             </div>
           </div>
           <div className="button_app">
             <img src={apple} alt="404" />
             <div className="button_app__txt">
-              <p>Скачать в</p>
+              <p>Завантажити в</p>
               <p className="button_app__txt_store">App Store</p>
             </div>
           </div>
         </div>
       </div>
       <div className="burger-menu__social">
-        <p>Наши соц. сети</p>
+        <p>Наші соц. мережі</p>
         <div className="burger-menu__social-links">
           <img src={telegram} alt="404" />
           <img src={vk} alt="404" />

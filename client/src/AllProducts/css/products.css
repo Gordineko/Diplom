@@ -171,7 +171,8 @@
   position: absolute;
   top: -18px;
   left: 69px;
-  text-decoration: line-through 1.5px;
+  text-decoration: line-through;
+  font-size: 14px;
 }
 
 .prod {
@@ -179,6 +180,7 @@
 }
 .without-discount {
   color: #000;
+  display: none;
 }
 .product__costs {
   position: relative;

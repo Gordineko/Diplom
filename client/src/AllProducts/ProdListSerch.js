@@ -66,11 +66,11 @@ function ProdListSerch() {
           </div>
           <div className="products__catalog">
             <div className="products__sorting">
-              <button className="products__sorting-btn">Отсортировать</button>
+              <button className="products__sorting-btn">Отсортувати</button>
             </div>
             <div className="products__catalog-title">
               <h2>
-                Все подходящие товары по вашему запросу "
+                Усі відповідні товари за вашим запитом "
                 <span className="catalog-title-bold">{inquiry}</span>"
               </h2>
             </div>

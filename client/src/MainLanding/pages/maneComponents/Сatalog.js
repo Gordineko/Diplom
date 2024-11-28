@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import "./style/catalog.css";
-import phones from "../../image/products/phones.png";
-import laptops from "../../image/products/laptops.png";
-import tablets from "../../image/products/tablets.png";
+import IPhones from "../../image/products/IPhone.png";
+import IPad from "../../image/products/IPad.png";
+import MacBook from "../../image/products/MacBook.png";
 import games from "../../image/products/games.png";
 import homes from "../../image/products/homes.png";
 import consoles from "../../image/products/consoles.png";
@@ -13,9 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 function Сatalog() {
   const imageMap = {
-    phones,
-    laptops,
-    tablets,
+    IPhones,
+    IPad,
+    MacBook,
     games,
     homes,
     consoles,
@@ -36,8 +36,10 @@ function Сatalog() {
   return (
     <section className="catalog">
       <div className="catalog__title">
-        <h2>Каталог товаров</h2>
-        <span onClick={openCatalog}>{isOpen ? "Скрыть" : "Показать всё"}</span>
+        <h2>Каталог товарів</h2>
+        <span onClick={openCatalog}>
+          {isOpen ? "Приховати" : "Показати все"}
+        </span>
       </div>
       <div className={isOpen ? "catalog__list open" : "catalog__list close"}>
         {devices.types.map((type) => (

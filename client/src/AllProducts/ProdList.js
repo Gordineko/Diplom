@@ -16,6 +16,7 @@ const Prod = observer(() => {
   const { type } = useParams();
   const [values, setValues] = useState([0, 500000]);
   const [sortBy, setSortBy] = useState(null);
+  const [sortedDevice, setSortedDevice] = useState([]);
   const [activeSort, setActiveSort] = useState(false);
   const { devices } = useContext(CustomContext);
   const pages = Math.ceil(devices.totalCount / 6);
@@ -31,19 +32,77 @@ const Prod = observer(() => {
   }, []);
 
   useEffect(() => {
+    // Асинхронный вызов для получения данных
     fetchDevices(
       devices.selectedType.id,
       devices.selectedBrand.id,
       devices.page,
-      6,
+      20,
       sortBy
     ).then((data) => {
-      console.log(data);
+      setSortedDevice(data.rows); // Устанавливаем новое состояние для sortedDevice
       devices.setDevices(data.rows);
       devices.setTotalCount(data.count);
       devices.setLimit(data.limit);
     });
-  }, [devices.page, devices.selectedType, sortBy]);
+  }, [devices.page, devices.selectedType]); // Зависимости для вызова fetchDevices
+
+  useEffect(() => {
+    // Создаем функцию для сортировки
+    const sortDevices = () => {
+      let sorted = [...sortedDevice]; // Создаем копию массива, чтобы избежать мутаций
+
+      switch (sortBy) {
+        case "priceAscending":
+          sorted.sort((a, b) => {
+            const priceA =
+              parseInt(a.price.replace(/\s/g, ""), 10) * (1 - a.discount);
+            const priceB =
+              parseInt(b.price.replace(/\s/g, ""), 10) * (1 - b.discount);
+            return priceA - priceB;
+          });
+          console.log(sorted, "Сортировка по возрастанию цены с учетом скидки");
+          break;
+
+        case "priceDescending":
+          sorted.sort((a, b) => {
+            const priceA =
+              parseInt(a.price.replace(/\s/g, ""), 10) * (1 - a.discount);
+            const priceB =
+              parseInt(b.price.replace(/\s/g, ""), 10) * (1 - b.discount);
+            return priceB - priceA;
+          });
+          console.log(sorted, "Сортировка по убыванию цены с учетом скидки");
+          break;
+
+        case "priceDiscount":
+          sorted.sort((a, b) => {
+            const discountA = parseFloat(a.discount || 0); // Скидка у элемента A
+            const discountB = parseFloat(b.discount || 0); // Скидка у элемента B
+
+            // Элементы с ненулевой скидкой идут первыми
+            if (discountB !== discountA) {
+              return discountB - discountA; // Сортируем по убыванию скидки
+            }
+
+            // Если скидки равны, сохраняем текущий порядок
+            return 0;
+          });
+          console.log(sorted, "3"); // Сортировка по скидке
+          break;
+
+        default:
+          sorted = [...sortedDevice]; // Если сортировка не выбрана, используем исходные данные
+      }
+
+      setSortedDevice(sorted); // Устанавливаем новый массив
+    };
+
+    // Проверяем, что sortedDevice готов
+    if (sortedDevice.length > 0) {
+      sortDevices();
+    }
+  }, [sortBy, devices.selectedType]); // Следим за изменением sortBy и sortedDevice
 
   const SortOpen = () => {
     setActiveSort(!activeSort);
@@ -85,7 +144,7 @@ const Prod = observer(() => {
                 </button>
               </div>
 
-              <Renge values={values} setValues={setValues} />
+              {/* <Renge values={values} setValues={setValues} /> */}
               <Sort
                 priceAscending={() => {
                   setSortBy("priceAscending");
@@ -93,20 +152,23 @@ const Prod = observer(() => {
                 priceDescending={() => {
                   setSortBy("priceDescending");
                 }}
+                priceDiscount={() => {
+                  setSortBy("priceDiscount");
+                }}
               />
             </div>
             <div className="products__catalog">
               <div className="products__sorting">
                 <button className="products__sorting-btn" onClick={SortOpen}>
-                  Отсортировать
+                  Сортувати
                 </button>
               </div>
               <ul className="products">
-                {devices.devices.map((product) => (
+                {sortedDevice.map((product) => (
                   <ProductItem key={product.id} product={product} />
                 ))}
               </ul>
-              <div className="products__switch">
+              {/* <div className="products__switch">
                 {[...Array(pages)].map((_, index) => (
                   <button
                     key={index + 1}
@@ -121,7 +183,7 @@ const Prod = observer(() => {
                     {index + 1}
                   </button>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
           <Footer />

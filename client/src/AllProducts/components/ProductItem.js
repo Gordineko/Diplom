@@ -98,7 +98,7 @@ function ProductItem(props) {
         <div className="product__costs">
           <p
             className={
-              product.discount === "0"
+              product.discount === 0
                 ? "product__cost without-discount"
                 : "product__cost with-discount"
             }
@@ -118,7 +118,7 @@ function ProductItem(props) {
               BuyProduct(product, product.id);
             }}
           >
-            В корзину
+            До кошику
           </button>
           <img src={stat} alt="404" />
           <img

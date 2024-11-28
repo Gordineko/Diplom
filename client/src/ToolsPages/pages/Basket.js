@@ -74,8 +74,8 @@ function Basket() {
         <div className="basket-place container">
           <div className="basket-place__title-content">
             <div className="basket-place__title">
-              <h2>Ваша корзина</h2>
-              <span>{count} товара</span>
+              <h2>Ваш кошик</h2>
+              <span>{count} товарів</span>
             </div>
             <div className="basket-place__tools">
               <span
@@ -84,10 +84,10 @@ function Basket() {
                   navigate("/");
                 }}
               >
-                Продолжить покупки
+                Продовжити покупки
               </span>
               <span className="basket-place__tools-clear" onClick={clearBusket}>
-                Очистить корзину
+                Очистити кошик
               </span>
             </div>
           </div>
@@ -158,13 +158,13 @@ function Basket() {
             </ul>
             <div className="basket-place__payment">
               <div className="basket-place__payment_discount">
-                <span>Общая скидка :</span>
+                <span>Загальна знижка :</span>
                 <span className="basket-place__payment_discount-txt">
                   - {sumDiscount} ₴
                 </span>
               </div>
               <div className="basket-place__payment_cost">
-                <span>Всего к оплате :</span>
+                <span>Усього до оплати :</span>
                 <span className="basket-place__payment_cost-txt">
                   {sumCost} ₴
                 </span>
@@ -173,7 +173,7 @@ function Basket() {
                 <div className="basket-place__payment-form__group">
                   <input
                     className="basket-place__payment-form__input"
-                    placeholder="Введите промокод"
+                    placeholder="Внесіть промокод"
                   ></input>
                   <button className="basket-place__payment-form__btn">
                     <img src={arrow} alt="404" />
@@ -185,7 +185,7 @@ function Basket() {
                     navigate(`/order`);
                   }}
                 >
-                  Оплатить всё
+                  Сплатити все
                 </button>
               </div>
             </div>
@@ -196,9 +196,9 @@ function Basket() {
           <div className="basket-place__clear-img">
             <img src={shop} alt="404" />
           </div>
-          <h2 className="basket-place__clear-main_txt">Корзина пуста</h2>
+          <h2 className="basket-place__clear-main_txt">Кошик порожній</h2>
           <span className="basket-place__clear-txt">
-            Но не поздно это исправить
+            Але не пізно це виправити
           </span>
           <button
             onClick={() => {
@@ -206,7 +206,7 @@ function Basket() {
             }}
             className="basket-place__clear-btn"
           >
-            Перейти к покупкам
+            Перейти до покупок
           </button>
         </div>
       )}

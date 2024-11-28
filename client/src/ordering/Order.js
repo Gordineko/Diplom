@@ -11,15 +11,15 @@ import switchMenu from "../MainLanding/image/icone/switch.png";
 import Select from "./SelectField";
 import OrderModal from "../modal/OrderModal";
 const SigninSchema = Yup.object().shape({
-  phoneNumber: Yup.string().required("Поле должно быть заполнено"),
-  orderEmail: Yup.string().required("Поле должно быть заполнено"),
-  surname: Yup.string().required("Поле должно быть заполнено"),
-  name: Yup.string().required("Поле должно быть заполнено"),
-  delivery: Yup.string().required("Поле должно быть заполнено"),
+  phoneNumber: Yup.string().required("Поле має бути заповнене"),
+  orderEmail: Yup.string().required("Поле має бути заповнене"),
+  surname: Yup.string().required("Поле має бути заповнене"),
+  name: Yup.string().required("Поле має бути заповнене"),
+  delivery: Yup.string().required("Поле має бути заповнене"),
 });
 function Order() {
   const options = [
-    { value: "", label: "Выберите место доставки" },
+    { value: "", label: "Оберіть мисце доставки" },
     {
       value: "novaposhta #1 Дніпро, вул. Маршала Малиновського, 114",
       label: "#1 Дніпро, вул. Маршала Малиновського, 114",
@@ -127,9 +127,9 @@ function Order() {
       </header>
       <main className="main-order">
         <div className="container">
-          <h2>Оформление заказа</h2>
+          <h2>Оформлення замовлення</h2>
           <div className="order__form">
-            <span>Ваши контактные данные</span>
+            <span>Ваші контактні дані</span>
             <Formik
               initialValues={{
                 phoneNumber: "",
@@ -162,7 +162,7 @@ function Order() {
                     <ul className="item-content__list">
                       <li className="item-content__list-item">
                         <span className="item-content__list-item-txt">
-                          Мобильный телеофон
+                          Мобільний телеофон
                         </span>
                         <Field
                           name="phoneNumber"
@@ -176,7 +176,7 @@ function Order() {
                       </li>
                       <li className="item-content__list-item">
                         <span className="item-content__list-item-txt">
-                          Електронная почта
+                          Електронна пошта
                         </span>
                         <Field
                           name="orderEmail"
@@ -189,7 +189,9 @@ function Order() {
                         ) : null}
                       </li>
                       <li className="item-content__list-item">
-                        <span className="item-content__list-item-txt">Имя</span>
+                        <span className="item-content__list-item-txt">
+                          Ім'я
+                        </span>
                         <Field
                           name="name"
                           placeholder={currentUser.patronymic}
@@ -200,7 +202,7 @@ function Order() {
                       </li>
                       <li className="item-content__list-item">
                         <span className="item-content__list-item-txt">
-                          Фамилия
+                          Прізвище
                         </span>
                         <Field
                           name="surname"
@@ -215,31 +217,26 @@ function Order() {
                     </ul>
 
                     <button className="item-content__list-button" type="submit">
-                      Сохранить изменения
+                      Зберегти зміни
                     </button>
                     <div className="reservation">
                       <h2>Заказ</h2>
                       <div className="order__form__warning">
                         <p>
-                          Согласно <Link> действующему законодательству</Link>{" "}
-                          для оплаты заказа на сумму 30000 ₴ и более необходимо
-                          обязательно подтвердить личность плательщика.
-                          Подтвердить личность во время доставки можно:
+                          Згідно з <Link> чинному законодавству</Link> для
+                          оплати замовлення на суму 30000 ₴ і більше необхідно
+                          обов'язково підтвердити особу платника. Підтвердити
+                          особу під час доставки можна:
                         </p>
                         <p className="warning__first">
-                          1. С помощью приложения ДІЯ с наложением вашей{" "}
-                          <Link>
-                            {" "}
-                            КЭП (квалифицированная электронная подпись)
-                          </Link>
-                          .
+                          1. За допомогою програми ДІЯ з накладенням вашої{" "}
+                          <Link> КЕП (кваліфікований електронний підпис)</Link>.
                         </p>
                         <p className="warning__second">
-                          2. При осуществлении оплаты предоставить
-                          уполномоченному лицу заверенные согласно оригиналу
-                          копии следующих документов: ИНН (РНОКПП), страницы
-                          паспорта, где содержатся Ваши фото и адрес
-                          регистрации.
+                          2. При здійсненні оплати надати уповноваженій особі
+                          завірені згідно з оригіналом копії таких документів:
+                          ІПН (РНОКПП), сторінки паспорта, де містяться Ваші
+                          фото та адреса реєстрації.
                         </p>
                       </div>
                       <div className="order__form__basket">
@@ -305,7 +302,7 @@ function Order() {
                               navigate("/basket");
                             }}
                           >
-                            Редактировать заказ
+                            Редагувати замовлення
                           </div>
                         </ul>
                       </div>
@@ -346,9 +343,9 @@ function Order() {
                                   alt="404"
                                 />
                               </div>
-                              <span>Отделение новой почты</span>
+                              <span>Відділення нової пошти</span>
                             </div>
-                            <span>Бесплатно</span>
+                            <span>Безкоштовно</span>
                           </div>
                           <div
                             className={
@@ -401,9 +398,9 @@ function Order() {
                                   alt="404"
                                 />
                               </div>
-                              <span>Из нашего магазина</span>
+                              <span>З нашого магазину</span>
                             </div>
-                            <span>Бесплатно</span>
+                            <span>Безкоштовно</span>
                           </div>
                           <div
                             className={
@@ -433,7 +430,7 @@ function Order() {
                     </div>
                     <div className="paymant">
                       <h2>Оплата</h2>
-                      <p>Только наложеным плтежом (при получаение на почте)</p>
+                      <p>Тільки післяплатою (при отриманні на пошті)</p>
                     </div>
                   </div>
                   <div className="transition-block">
@@ -444,19 +441,19 @@ function Order() {
                           placeholder="Введите промокод"
                         ></input>
                         <div className="promo__btn">
-                          Применить
+                          Застосувати
                           <img src={arrow} alt="404" />
                         </div>
                       </div>
                       <div className="order-place__payment__ordering-content">
                         <div className="ordering-content_discount">
-                          <span>Общая скидка :</span>
+                          <span>Загальна знижкаа :</span>
                           <span className="ordering-content_discount-txt">
                             - {sumDiscount} ₴
                           </span>
                         </div>
                         <div className="ordering-content_cost">
-                          <span>Всего к оплате :</span>
+                          <span>Усього до оплати :</span>
                           <span className="ordering-content_cost-txt">
                             {sumCost} ₴
                           </span>
@@ -466,7 +463,7 @@ function Order() {
                           className="ordering-content__submit"
                           type="submit"
                         >
-                          Оплатить всё
+                          Сплатити все
                         </button>
                         <div className="ordering-content__description">
                           <span>

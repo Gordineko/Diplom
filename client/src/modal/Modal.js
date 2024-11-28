@@ -20,7 +20,7 @@ const Modal = ({ isOpen }) => {
   return (
     <div className="modal" style={modalStyle}>
       <div className="modal-header">
-        <p>Данные успешно обновлены</p>
+        <p>Дані успішно оновлено</p>
       </div>
     </div>
   );

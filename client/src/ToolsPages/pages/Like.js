@@ -38,7 +38,7 @@ function Like() {
         <>
           <Header />
           <div className="favored container">
-            <h1>Список желаемого</h1>
+            <h1>Список бажаного</h1>
 
             {favored.length != 0 ? (
               <>
@@ -50,14 +50,14 @@ function Like() {
                   ))}
                 </ul>
                 <button className="favored__btn-del" onClick={DelitLikeList}>
-                  Убрать всё
+                  Прибрати все
                 </button>
               </>
             ) : (
               <div className="favored__clear">
                 <img className="favored__clear-img" src={likeimg} alt="404" />
                 <span className="favored__clear-txt">
-                  Упс! Ваш список желаний пуст
+                  Упс! Ваш список бажань порожній
                 </span>
                 <button
                   className="favored__clear-btn"
@@ -65,7 +65,7 @@ function Like() {
                     navigate("/");
                   }}
                 >
-                  Перейти на главную
+                  Перейти на головну
                 </button>
               </div>
             )}

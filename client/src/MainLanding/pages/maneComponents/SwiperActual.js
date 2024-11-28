@@ -34,7 +34,7 @@ export default function App() {
   return (
     <section className="swiper-container">
       <div className="swiper__title">
-        <h2>Актуальные предложения</h2>
+        <h2>Актуальні пропозиції</h2>
       </div>
       <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div>
